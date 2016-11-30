@@ -14,6 +14,9 @@ namespace MoneyCounter.Data.Model
 			MoneyOperations = new ObservableCollection<MoneyOperation>();
 		}
 
+		/// <summary>
+		/// Получает занчение баланса кошелька.
+		/// </summary>
 		public double Balance => MoneyOperations.Sum(operation => operation.Value);
 
 		public ObservableCollection<MoneyOperation> MoneyOperations { get; }
