@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Model\MoneyOperation.cs" />
     <Compile Include="Model\OperationDirection.cs" />
+    <Compile Include="Model\OperationTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Purse.cs" />
   </ItemGroup>

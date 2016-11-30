@@ -12,6 +12,7 @@ namespace MoneyCounter.Data.Model
 		public Purse()
 		{
 			MoneyOperations = new ObservableCollection<MoneyOperation>();
+			OperationTemplates = new ObservableCollection<OperationTemplate>();
 		}
 
 		/// <summary>
@@ -23,5 +24,10 @@ namespace MoneyCounter.Data.Model
 		/// Получает список операций.
 		/// </summary>
 		public ObservableCollection<MoneyOperation> MoneyOperations { get; }
+
+		/// <summary>
+		/// Получает список шаблонов операций.
+		/// </summary>
+		public ObservableCollection<OperationTemplate> OperationTemplates { get; }
 	}
 }
