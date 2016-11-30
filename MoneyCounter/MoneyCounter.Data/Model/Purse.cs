@@ -19,6 +19,9 @@ namespace MoneyCounter.Data.Model
 		/// </summary>
 		public double Balance => MoneyOperations.Sum(operation => operation.Value);
 
+		/// <summary>
+		/// Получает список операций.
+		/// </summary>
 		public ObservableCollection<MoneyOperation> MoneyOperations { get; }
 	}
 }
