@@ -1,9 +1,4 @@
 ﻿using Catel.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoneyCounter.Data.Model
 {
@@ -11,8 +6,7 @@ namespace MoneyCounter.Data.Model
 	/// Класс шаблон денежной операции.
 	/// </summary>
 	public class OperationTemplate : ObservableObject
-	{
-		
+	{		
 		/// <summary>
 		/// Получает или задает имя операции.
 		/// </summary>
@@ -35,12 +29,12 @@ namespace MoneyCounter.Data.Model
 		}
 
 		/// <summary>
-		/// Получает или задает вуличину денежной операции.
+		/// Получает или задает величину денежной операции.
 		/// </summary>
 		private double _Value;
 
 		/// <summary>
-		/// Получает или задает вуличину денежной операции.
+		/// Получает или задает величину денежной операции.
 		/// </summary>
 		public double Value
 		{
@@ -55,5 +49,15 @@ namespace MoneyCounter.Data.Model
 			}
 		}
 
-	}
+		/// <summary>
+		/// Метод создания операции на основе существующего шаблона. 
+		/// </summary>
+		/// <returns>операция на основе существующего шаблона</returns>
+		public MoneyOperation CreateMoneyOperation()
+		{
+			var operation = new MoneyOperation();
+			operation.Initialaze(Value, OperationName);						
+			return operation;
+		}
+	}	
 }

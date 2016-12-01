@@ -1,6 +1,7 @@
 ﻿using Catel.Data;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace MoneyCounter.Data.Model
 {
@@ -13,6 +14,7 @@ namespace MoneyCounter.Data.Model
 		{
 			MoneyOperations = new ObservableCollection<MoneyOperation>();
 			OperationTemplates = new ObservableCollection<OperationTemplate>();
+			MoneyOperations.CollectionChanged += (sender, args) => RaisePropertyChanged(nameof(Balance));
 		}
 
 		/// <summary>
@@ -29,5 +31,15 @@ namespace MoneyCounter.Data.Model
 		/// Получает список шаблонов операций.
 		/// </summary>
 		public ObservableCollection<OperationTemplate> OperationTemplates { get; }
+
+		/// <summary>
+		/// Метод при десериализации востанавливает подписку на изменение коллкции MoneyOperations.
+		/// </summary>
+		/// <param name="context">контекст</param>
+		[OnDeserialized]
+		private void OnDeserialized(StreamingContext context)
+		{
+			MoneyOperations.CollectionChanged += (sender, args) => RaisePropertyChanged(nameof(Balance));
+		}
 	}
 }
