@@ -1,6 +1,5 @@
 ﻿using System;
 using Catel.Data;
-using System;
 
 namespace MoneyCounter.Data.Model
 {
@@ -77,6 +76,5 @@ namespace MoneyCounter.Data.Model
 				RaisePropertyChanged(nameof(OperationDate));
 			}
 		}
-
 	}
 }

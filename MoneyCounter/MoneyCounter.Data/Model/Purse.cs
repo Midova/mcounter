@@ -18,6 +18,16 @@ namespace MoneyCounter.Data.Model
 		}
 
 		/// <summary>
+		/// При десериализации востанавливает подписку на изменение коллкции MoneyOperations.
+		/// </summary>
+		/// <param name="context">Контекст.</param>
+		[OnDeserialized]
+		private void OnDeserialized(StreamingContext context)
+		{
+			MoneyOperations.CollectionChanged += (sender, args) => RaisePropertyChanged(nameof(Balance));
+		}
+
+		/// <summary>
 		/// Получает занчение баланса кошелька.
 		/// </summary>
 		public double Balance => MoneyOperations.Sum(operation => operation.Value);
@@ -30,16 +40,6 @@ namespace MoneyCounter.Data.Model
 		/// <summary>
 		/// Получает список шаблонов операций.
 		/// </summary>
-		public ObservableCollection<OperationTemplate> OperationTemplates { get; }
-
-		/// <summary>
-		///При десериализации востанавливает подписку на изменение коллкции MoneyOperations.
-		/// </summary>
-		/// <param name="context">контекст</param>
-		[OnDeserialized]
-		private void OnDeserialized(StreamingContext context)
-		{
-			MoneyOperations.CollectionChanged += (sender, args) => RaisePropertyChanged(nameof(Balance));
-		}
+		public ObservableCollection<OperationTemplate> OperationTemplates { get; }				
 	}
 }

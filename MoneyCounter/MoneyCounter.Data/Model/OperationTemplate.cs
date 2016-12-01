@@ -52,7 +52,7 @@ namespace MoneyCounter.Data.Model
 		/// <summary>
 		/// Создает операцию на основе существующего шаблона. 
 		/// </summary>
-		/// <returns>операция на основе существующего шаблона</returns>
+		/// <returns>Oперация на основе существующего шаблона.</returns>
 		public MoneyOperation CreateMoneyOperation()
 		{
 			var operation = new MoneyOperation() { Value = Value, OperationName = OperationName };				
