@@ -1,4 +1,5 @@
 ﻿using Catel.Data;
+using System;
 
 namespace MoneyCounter.Data.Model
 {
@@ -54,5 +55,27 @@ namespace MoneyCounter.Data.Model
 		/// Получает направление операции.
 		/// </summary>
 		public OperationDirection OperationDirection => _Value > 0 ? OperationDirection.Income : OperationDirection.Output;
+
+		/// <summary>
+		/// Получает и задает время операции.
+		/// </summary>
+		private DateTime _OperationDate;
+
+		/// <summary>
+		/// Получает и задает время операции.
+		/// </summary>
+		public DateTime OperationDate
+		{
+			get { return _OperationDate; }
+			set
+			{
+				if (_OperationDate == value)
+					return;
+
+				_OperationDate = value;
+				RaisePropertyChanged(nameof(OperationDate));
+			}
+		}
+
 	}
 }
