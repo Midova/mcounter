@@ -9,6 +9,18 @@ namespace MoneyCounter.Data.Model
 	/// </summary>
 	public class MoneyOperation : ObservableObject
 	{
+		public MoneyOperation()
+		{
+			Tags = new List<string>();
+		}
+
+		public MoneyOperation(string operationName, double value, List<string> tags)
+		{
+			_OperationName = operationName;
+			_Value = value;
+			Tags = tags;
+		}
+		
 		/// <summary>
 		/// Получает или задает имя операции.
 		/// </summary>
@@ -81,6 +93,6 @@ namespace MoneyCounter.Data.Model
 		/// <summary>
 		/// Получает или задает коллекцию тегов операции.
 		/// </summary>
-		public List<string> Tags { get; internal set; }
+		public List<string> Tags { get; private set; }
 	}
 }

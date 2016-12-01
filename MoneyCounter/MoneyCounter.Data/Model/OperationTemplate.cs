@@ -8,6 +8,11 @@ namespace MoneyCounter.Data.Model
 	/// </summary>
 	public class OperationTemplate : ObservableObject
 	{		
+		public OperationTemplate()
+		{
+			Tags = new List<string>();
+		}
+		
 		/// <summary>
 		/// Получает или задает имя операции.
 		/// </summary>
@@ -61,7 +66,7 @@ namespace MoneyCounter.Data.Model
 		/// <returns>Oперация на основе существующего шаблона.</returns>
 		public MoneyOperation CreateMoneyOperation()
 		{
-			var operation = new MoneyOperation() { Value = Value, OperationName = OperationName, Tags = Tags };				
+			var operation = new MoneyOperation (OperationName, Value, Tags);
 			return operation;
 		}
 	}	

@@ -14,7 +14,7 @@ namespace MoneyCounter.Data.Model
 		public Purse()
 		{
 			MoneyOperations = new ObservableCollection<MoneyOperation>();
-			OperationTemplates = new ObservableCollection<OperationTemplate>();
+			OperationTemplates = new ObservableCollection<OperationTemplate>();			
 			MoneyOperations.CollectionChanged += (sender, args) => RaisePropertyChanged(nameof(Balance));
 		}
 
@@ -46,6 +46,6 @@ namespace MoneyCounter.Data.Model
 		/// <summary>
 		/// Получает коллекцию тегов всех операции в кошельке.
 		/// </summary>
-		public List<string> Tags => (List<string>)MoneyOperations.Select(opration => opration.Tags).Distinct();
+		public List<string> Tags => MoneyOperations.SelectMany(opration => opration.Tags).Distinct().ToList();
 	}
 }
