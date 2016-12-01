@@ -1,4 +1,5 @@
 ﻿using Catel.Data;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -40,6 +41,11 @@ namespace MoneyCounter.Data.Model
 		/// <summary>
 		/// Получает список шаблонов операций.
 		/// </summary>
-		public ObservableCollection<OperationTemplate> OperationTemplates { get; }				
+		public ObservableCollection<OperationTemplate> OperationTemplates { get; }
+
+		/// <summary>
+		/// Получает коллекцию тегов всех операции в кошельке.
+		/// </summary>
+		public List<string> Tags => (List<string>)MoneyOperations.Select(opration => opration.Tags).Distinct();
 	}
 }

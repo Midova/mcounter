@@ -1,5 +1,6 @@
 ﻿using System;
 using Catel.Data;
+using System.Collections.Generic;
 
 namespace MoneyCounter.Data.Model
 {
@@ -76,5 +77,10 @@ namespace MoneyCounter.Data.Model
 				RaisePropertyChanged(nameof(OperationDate));
 			}
 		}
+
+		/// <summary>
+		/// Получает или задает коллекцию тегов операции.
+		/// </summary>
+		public List<string> Tags { get; internal set; }
 	}
 }

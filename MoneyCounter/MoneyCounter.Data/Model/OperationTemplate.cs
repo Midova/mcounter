@@ -1,4 +1,5 @@
 ﻿using Catel.Data;
+using System.Collections.Generic;
 
 namespace MoneyCounter.Data.Model
 {
@@ -50,12 +51,17 @@ namespace MoneyCounter.Data.Model
 		}
 
 		/// <summary>
+		/// Получает или задает коллекцию тегов операции.
+		/// </summary>
+		public List<string> Tags { get; private set; }
+
+		/// <summary>
 		/// Создает операцию на основе существующего шаблона. 
 		/// </summary>
 		/// <returns>Oперация на основе существующего шаблона.</returns>
 		public MoneyOperation CreateMoneyOperation()
 		{
-			var operation = new MoneyOperation() { Value = Value, OperationName = OperationName };				
+			var operation = new MoneyOperation() { Value = Value, OperationName = OperationName, Tags = Tags };				
 			return operation;
 		}
 	}	
