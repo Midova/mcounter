@@ -33,7 +33,7 @@ namespace MoneyCounter.Data.Model
 		public ObservableCollection<OperationTemplate> OperationTemplates { get; }
 
 		/// <summary>
-		/// Метод при десериализации востанавливает подписку на изменение коллкции MoneyOperations.
+		///При десериализации востанавливает подписку на изменение коллкции MoneyOperations.
 		/// </summary>
 		/// <param name="context">контекст</param>
 		[OnDeserialized]

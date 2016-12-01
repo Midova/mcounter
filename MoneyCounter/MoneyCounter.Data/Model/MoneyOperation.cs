@@ -9,17 +9,6 @@ namespace MoneyCounter.Data.Model
 	public class MoneyOperation : ObservableObject
 	{
 		/// <summary>
-		/// Метод инициалиации операции с заданными именем и величиной.
-		/// </summary>
-		/// <param name="value">значение операции</param>
-		/// <param name="operationName">имя операции</param>
-		public void Initialaze(double value, string operationName)
-		{
-			Value = value;
-			OperationName = operationName;
-		}
-
-		/// <summary>
 		/// Получает или задает имя операции.
 		/// </summary>
 		private string _OperationName;

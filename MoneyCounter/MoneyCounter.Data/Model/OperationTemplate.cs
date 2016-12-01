@@ -50,13 +50,12 @@ namespace MoneyCounter.Data.Model
 		}
 
 		/// <summary>
-		/// Метод создания операции на основе существующего шаблона. 
+		/// Создает операцию на основе существующего шаблона. 
 		/// </summary>
 		/// <returns>операция на основе существующего шаблона</returns>
 		public MoneyOperation CreateMoneyOperation()
 		{
-			var operation = new MoneyOperation();
-			operation.Initialaze(Value, OperationName);						
+			var operation = new MoneyOperation() { Value = Value, OperationName = OperationName };				
 			return operation;
 		}
 	}	
