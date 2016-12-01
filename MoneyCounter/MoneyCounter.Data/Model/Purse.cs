@@ -1,4 +1,5 @@
 ﻿using Catel.Data;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -13,7 +14,7 @@ namespace MoneyCounter.Data.Model
 		public Purse()
 		{
 			MoneyOperations = new ObservableCollection<MoneyOperation>();
-			OperationTemplates = new ObservableCollection<OperationTemplate>();
+			OperationTemplates = new ObservableCollection<OperationTemplate>();			
 			MoneyOperations.CollectionChanged += (sender, args) => RaisePropertyChanged(nameof(Balance));
 		}
 
@@ -40,6 +41,11 @@ namespace MoneyCounter.Data.Model
 		/// <summary>
 		/// Получает список шаблонов операций.
 		/// </summary>
-		public ObservableCollection<OperationTemplate> OperationTemplates { get; }				
+		public ObservableCollection<OperationTemplate> OperationTemplates { get; }
+
+		/// <summary>
+		/// Получает коллекцию тегов всех операции в кошельке.
+		/// </summary>
+		public List<string> Tags => MoneyOperations.SelectMany(opration => opration.Tags).Distinct().ToList();
 	}
 }
