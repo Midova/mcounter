@@ -14,13 +14,6 @@ namespace MoneyCounter.Data.Model
 			Tags = new List<string>();
 		}
 
-		public MoneyOperation(string operationName, double value, List<string> tags)
-		{
-			_OperationName = operationName;
-			_Value = value;
-			Tags = tags;
-		}
-		
 		/// <summary>
 		/// Получает или задает имя операции.
 		/// </summary>

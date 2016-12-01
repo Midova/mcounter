@@ -66,7 +66,8 @@ namespace MoneyCounter.Data.Model
 		/// <returns>Oперация на основе существующего шаблона.</returns>
 		public MoneyOperation CreateMoneyOperation()
 		{
-			var operation = new MoneyOperation (OperationName, Value, Tags);
+			var operation = new MoneyOperation() { OperationName = OperationName, Value = Value };
+			operation.Tags.AddRange(Tags);
 			return operation;
 		}
 	}	
