@@ -57,12 +57,12 @@ namespace MoneyCounter.Data.Model
 		public OperationDirection OperationDirection => _Value > 0 ? OperationDirection.Income : OperationDirection.Output;
 
 		/// <summary>
-		/// Получает и задает время операции.
+		/// Получает и задает дату проведения операции.
 		/// </summary>
 		private DateTime _OperationDate;
 
 		/// <summary>
-		/// Получает и задает время операции.
+		/// Получает и задает дату проведения операции.
 		/// </summary>
 		public DateTime OperationDate
 		{
