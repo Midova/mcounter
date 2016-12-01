@@ -1,13 +1,12 @@
-﻿using System;
-using Catel.Data;
+﻿using Catel.Data;
 
 namespace MoneyCounter.Data.Model
 {
 	/// <summary>
-	/// Класс операций с деньгой.
+	/// Класс шаблон денежной операции.
 	/// </summary>
-	public class MoneyOperation : ObservableObject
-	{
+	public class OperationTemplate : ObservableObject
+	{		
 		/// <summary>
 		/// Получает или задает имя операции.
 		/// </summary>
@@ -28,7 +27,7 @@ namespace MoneyCounter.Data.Model
 				RaisePropertyChanged(nameof(OperationName));
 			}
 		}
-		
+
 		/// <summary>
 		/// Получает или задает величину денежной операции.
 		/// </summary>
@@ -46,15 +45,18 @@ namespace MoneyCounter.Data.Model
 					return;
 
 				_Value = value;
-				RaisePropertyChanged(nameof(Value));
-				RaisePropertyChanged(nameof(OperationDirection));
+				RaisePropertyChanged(nameof(Value));				
 			}
 		}
-		
+
 		/// <summary>
-		/// Получает направление операции.
+		/// Создает операцию на основе существующего шаблона. 
 		/// </summary>
-		public OperationDirection OperationDirection => _Value > 0 ? OperationDirection.Income : OperationDirection.Output;
-				
-	}
+		/// <returns>операция на основе существующего шаблона</returns>
+		public MoneyOperation CreateMoneyOperation()
+		{
+			var operation = new MoneyOperation() { Value = Value, OperationName = OperationName };				
+			return operation;
+		}
+	}	
 }
