@@ -2,13 +2,29 @@
 namespace MoneyCounter.Data.Model
 {
 	/// <summary>
-	/// Кошелк-счет с безналичными дньгами
+	/// Cчет с безналичными дньгами.
 	/// </summary>
 	public class NonChashAccount : Account
 	{
 		/// <summary>
 		/// Получает или задает номер счета.
 		/// </summary>
-		public string AccountNumber { get; private set; }
+		public string _AccountNumber;
+
+		/// <summary>
+		/// Получает или задает номер счета.
+		/// </summary>
+		public string AccountNumber
+		{
+			get { return _AccountNumber; }
+			set
+			{
+				if (_AccountNumber == value)
+					return;
+
+				_AccountNumber = value;
+				RaisePropertyChanged(nameof(AccountNumber));
+			}
+		}
 	}
 }

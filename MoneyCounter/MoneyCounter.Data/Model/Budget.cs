@@ -8,14 +8,19 @@ namespace MoneyCounter.Data.Model
 	/// </summary>
 	public class Budget
 	{
+		public Budget()
+		{
+			Accounts = new ObservableCollection<Account>();
+		}
+		
 		/// <summary>
-		/// Получает задает коллекцию кошельк-счетов.
+		/// Получает задает коллекцию счетов.
 		/// </summary>
 		public ObservableCollection<Account> Accounts { get; private set; }
 
 		/// <summary>
-		/// Получает общий (глобальный) баланс всех кошельков.
+		/// Получает общий баланс всех счетов.
 		/// </summary>
-		public double GlobalBalance => Accounts.Sum(account => account.Balance);
+		public double Balance => Accounts.Sum(account => account.Balance);
 	}
 }

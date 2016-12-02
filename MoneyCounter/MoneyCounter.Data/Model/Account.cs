@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 namespace MoneyCounter.Data.Model
 {
 	/// <summary>
-	/// Класс-родитель кошелек-счет с операциями.
+	/// Счет с операциями.
 	/// </summary>
 	public abstract class Account : ObservableObject
 	{
@@ -29,7 +29,28 @@ namespace MoneyCounter.Data.Model
 		}
 
 		/// <summary>
-		/// Получает занчение баланса кошельк-счета.
+		/// Получает или задает описание счета.
+		/// </summary>
+		private string _Description;
+
+		/// <summary>
+		/// Получает или задает описание счета.
+		/// </summary>
+		public string Description
+		{
+			get { return _Description; }
+			set
+			{
+				if (_Description == value)
+					return;
+
+				_Description = value;
+				RaisePropertyChanged(nameof(Description));
+			}
+		}
+
+		/// <summary>
+		/// Получает занчение баланса счета.
 		/// </summary>
 		public double Balance => MoneyOperations.Sum(operation => operation.Value);
 
@@ -44,13 +65,8 @@ namespace MoneyCounter.Data.Model
 		public ObservableCollection<OperationTemplate> OperationTemplates { get; }
 
 		/// <summary>
-		/// Получает коллекцию тегов всех операции в кошельк-счете.
+		/// Получает коллекцию тегов всех операции в счете.
 		/// </summary>
-		public List<string> Tags => MoneyOperations.SelectMany(opration => opration.Tags).Distinct().ToList();
-
-		/// <summary>
-		/// Получает или задает описание кошельк-счета.
-		/// </summary>
-		public string Description { get; private set; }
+		public List<string> Tags => MoneyOperations.SelectMany(opration => opration.Tags).Distinct().ToList();		
 	}
 }
