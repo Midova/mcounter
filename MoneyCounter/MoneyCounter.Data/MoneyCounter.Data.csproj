@@ -44,11 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Budget.cs" />
+    <Compile Include="Model\CashAccount.cs" />
     <Compile Include="Model\MoneyOperation.cs" />
+    <Compile Include="Model\NonChashAccount.cs" />
     <Compile Include="Model\OperationDirection.cs" />
     <Compile Include="Model\OperationTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\Purse.cs" />
+    <Compile Include="Model\Account.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
