@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace MoneyCounter.Data.Model
 {
 	/// <summary>
-	/// Класс операций с деньгой.
+	/// Класс операций с деньгами.
 	/// </summary>
 	public class MoneyOperation : ObservableObject
 	{
