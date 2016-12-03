@@ -9,7 +9,7 @@ namespace MoneyCounter
 		/// <summary>
 		/// Получает буджет.
 		/// </summary>
-		Budget Butget { get; }
+		Budget Budget { get; }
 
 		/// <summary>
 		/// Получает список шаблонов операций.

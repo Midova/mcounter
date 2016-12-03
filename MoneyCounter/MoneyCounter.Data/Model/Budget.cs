@@ -14,7 +14,7 @@ namespace MoneyCounter.Data.Model
 		}
 		
 		/// <summary>
-		/// Получает задает коллекцию счетов.
+		/// Получает или задает коллекцию счетов.
 		/// </summary>
 		public ObservableCollection<Account> Accounts { get; private set; }
 
