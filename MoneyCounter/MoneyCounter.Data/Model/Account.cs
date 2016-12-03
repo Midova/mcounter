@@ -13,8 +13,7 @@ namespace MoneyCounter.Data.Model
 	{
 		public Account()
 		{
-			MoneyOperations = new ObservableCollection<MoneyOperation>();
-			OperationTemplates = new ObservableCollection<OperationTemplate>();			
+			MoneyOperations = new ObservableCollection<MoneyOperation>();			
 			MoneyOperations.CollectionChanged += (sender, args) => RaisePropertyChanged(nameof(Balance));
 		}
 
@@ -57,12 +56,7 @@ namespace MoneyCounter.Data.Model
 		/// <summary>
 		/// Получает список операций.
 		/// </summary>
-		public ObservableCollection<MoneyOperation> MoneyOperations { get; }
-
-		/// <summary>
-		/// Получает список шаблонов операций.
-		/// </summary>
-		public ObservableCollection<OperationTemplate> OperationTemplates { get; }
+		public ObservableCollection<MoneyOperation> MoneyOperations { get; }		
 
 		/// <summary>
 		/// Получает коллекцию тегов всех операции в счете.
