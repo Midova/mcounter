@@ -30,13 +30,13 @@ namespace MoneyCounter
 		}
 
 		/// <summary>
-		/// Получает буджет.
+		/// Получает бюджет.
 		/// </summary>
 		[DataMember]
 		public Budget Budget { get; private set; }
 
 		/// <summary>
-		/// Получает трекинг отслеживания модификации данной сессии.
+		/// Получает флаг модификации текущей сессси.
 		/// </summary>
 		[DataMember]
 		public bool IsDerty { get; }
@@ -48,15 +48,15 @@ namespace MoneyCounter
 		public ObservableCollection<OperationTemplate> OperationTemplates { get; }
 
 		/// <summary>
-		/// Получает теги из операций счетов текущего буджета.
+		/// Получает теги из операций счетов текущего бюджета.
 		/// </summary>		
 		public List<string> Tags => Budget.Accounts.SelectMany(opration => opration.Tags).ToList();
 
 		/// <summary>
 		/// Выполняет дисериализацию сессии из указанного файла.
 		/// </summary>
-		/// <param name="filePath">путь к файлу</param>
-		/// <returns>сессия</returns>
+		/// <param name="filePath">Путь к файлу.</param>
+		/// <returns>Сессия.</returns>
 		public static Session Load(string filePath)
 		{			
 			if (!File.Exists(filePath))
@@ -73,8 +73,8 @@ namespace MoneyCounter
 		/// <summary>
 		/// Выполняет сериализацию сессии по указанному пути.
 		/// </summary>
-		/// <param name="filePath">путь к файлу</param>
-		/// <param name="session">нынешняя сессия</param>
+		/// <param name="filePath">Путь к файлу.</param>
+		/// <param name="session">Нынешняя сессия.</param>
 		public static void Save(string filePath, Session session)
 		{			
 			JsonSerializer serializer = new JsonSerializer();

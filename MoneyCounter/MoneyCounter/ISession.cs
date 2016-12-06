@@ -4,10 +4,13 @@ using System.Collections.ObjectModel;
 
 namespace MoneyCounter
 {
+	/// <summary>
+	/// Интерфейс для классов содержащих оперативные данные пользователя.
+	/// </summary>
 	public interface ISession
 	{
 		/// <summary>
-		/// Получает буджет.
+		/// Получает бюджет.
 		/// </summary>
 		Budget Budget { get; }
 
@@ -17,7 +20,7 @@ namespace MoneyCounter
 		ObservableCollection<OperationTemplate> OperationTemplates { get; }
 
 		/// <summary>
-		/// Получает трекинг отслеживания модификации данной сессии.
+		/// Получает флаг модификации текущей сессси.
 		/// </summary>
 		bool IsDerty { get; }
 

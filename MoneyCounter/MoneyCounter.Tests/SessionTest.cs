@@ -38,7 +38,7 @@ namespace MoneyCounter.Tests
 		/// <summary>
 		/// Создание и заполнение тестового класса Budget.
 		/// </summary>
-		/// <returns>Заболненный класс Budget/returns>
+		/// <returns>Заболненный класс Budget./returns>
 		private Budget PopulateData()
 		{
 			var budget = new Budget();
