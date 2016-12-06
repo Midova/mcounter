@@ -9,6 +9,7 @@ namespace MoneyCounter.Data.Model
 	/// <summary>
 	/// Счет с операциями.
 	/// </summary>
+	[DataContract]
 	public abstract class Account : ObservableObject
 	{
 		public Account()
@@ -30,11 +31,12 @@ namespace MoneyCounter.Data.Model
 		/// <summary>
 		/// Получает или задает описание счета.
 		/// </summary>
+		[DataMember(Name = nameof(Description))]
 		private string _Description;
 
 		/// <summary>
 		/// Получает или задает описание счета.
-		/// </summary>
+		/// </summary>		
 		public string Description
 		{
 			get { return _Description; }
@@ -56,6 +58,7 @@ namespace MoneyCounter.Data.Model
 		/// <summary>
 		/// Получает список операций.
 		/// </summary>
+		[DataMember]
 		public ObservableCollection<MoneyOperation> MoneyOperations { get; }		
 
 		/// <summary>

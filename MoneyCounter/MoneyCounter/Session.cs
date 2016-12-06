@@ -5,12 +5,14 @@ using MoneyCounter.Data.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.IO;
+using System.Runtime.Serialization;
 
 namespace MoneyCounter
 {
 	/// <summary>
 	/// Класс, содержащий оперативные данные пользователя.
-	/// </summary>
+	/// </summary>	
+	[DataContract]
 	public class Session : ISession
 	{
 		public Session()
@@ -19,24 +21,36 @@ namespace MoneyCounter
 		}
 
 		/// <summary>
+		/// Инициализирует сессию.
+		/// </summary>
+		/// <param name="budget">Бюджет для инициализации сессии.</param>
+		public void Initialize(Budget budget)
+		{
+			Budget = budget;
+		}
+
+		/// <summary>
 		/// Получает буджет.
 		/// </summary>
-		public Budget Budget { get; }
+		[DataMember]
+		public Budget Budget { get; private set; }
 
 		/// <summary>
 		/// Получает трекинг отслеживания модификации данной сессии.
 		/// </summary>
+		[DataMember]
 		public bool IsDerty { get; }
 
 		/// <summary>
 		/// Получает список шаблонов операций.
 		/// </summary>
+		[DataMember]
 		public ObservableCollection<OperationTemplate> OperationTemplates { get; }
 
 		/// <summary>
 		/// Получает теги из операций счетов текущего буджета.
-		/// </summary>
-		public List<string> Tags => Budget.Accounts.SelectMany(opration => opration.Tags).Distinct().ToList();
+		/// </summary>		
+		public List<string> Tags => Budget.Accounts.SelectMany(opration => opration.Tags).ToList();
 
 		/// <summary>
 		/// Выполняет дисериализацию сессии из указанного файла.
@@ -49,8 +63,9 @@ namespace MoneyCounter
 				return null;
 
 			Session result = null;
-			using (var reader = File.OpenRead(filePath))
-				result = JsonConvert.DeserializeObject<Session>(reader.ToString());		
+
+			var content = File.ReadAllText(filePath);
+			result = JsonConvert.DeserializeObject<Session>(content);
 			
 			return result;
 		}

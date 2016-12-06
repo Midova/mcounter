@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyCounter.Data", "MoneyC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyCounter", "MoneyCounter\MoneyCounter.csproj", "{3E20C65F-39E4-47D9-988E-7B79BCB254D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyCounter.Tests", "MoneyCounter.Tests\MoneyCounter.Tests.csproj", "{32E2CA43-8D7E-4608-BF20-CA6D6ED907C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3E20C65F-39E4-47D9-988E-7B79BCB254D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E20C65F-39E4-47D9-988E-7B79BCB254D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E20C65F-39E4-47D9-988E-7B79BCB254D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32E2CA43-8D7E-4608-BF20-CA6D6ED907C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32E2CA43-8D7E-4608-BF20-CA6D6ED907C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32E2CA43-8D7E-4608-BF20-CA6D6ED907C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32E2CA43-8D7E-4608-BF20-CA6D6ED907C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
