@@ -50,7 +50,7 @@ namespace MoneyCounter
 		/// <summary>
 		/// Получает теги из операций счетов текущего бюджета.
 		/// </summary>		
-		public List<string> Tags => Budget.Accounts.SelectMany(opration => opration.Tags).ToList();
+		public List<string> Tags => Budget.Accounts.SelectMany(opration => opration.Tags).Distinct().ToList();
 
 		/// <summary>
 		/// Выполняет дисериализацию сессии из указанного файла.
@@ -78,10 +78,7 @@ namespace MoneyCounter
 		public static void Save(string filePath, Session session)
 		{			
 			JsonSerializer serializer = new JsonSerializer();
-			serializer.Converters.Add(new JavaScriptDateTimeConverter());
-
-			serializer.NullValueHandling = NullValueHandling.Ignore;
-
+			
 			using (StreamWriter sw = new StreamWriter(filePath))
 			using (JsonWriter writer = new JsonTextWriter(sw))
 			{

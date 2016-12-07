@@ -55,7 +55,7 @@ namespace MoneyCounter.Tests
 			{
 				OperationName = "Зарплата",
 				OperationDate = DateTime.Today,
-				Tags = { "Вова"},
+				Tags = { "Вова" },
 				Value = 5
 			});
 
@@ -64,35 +64,13 @@ namespace MoneyCounter.Tests
 			{
 				OperationName = "Налог",
 				OperationDate = new DateTime(2016, 12, 05),
-				Tags = { "Даша", "машина" },
+				Tags = { "Даша", "машина", "Вова" },
 				Value = -2
 			});
 
 			budget.AddAccount(account1);
 			budget.AddAccount(account2);
-
-			//var accounts =
-			//	new Account[]
-			//	{
-			//		new CashAccount
-			//		{
-			//			Description = "Cash account",
-								
-			//		},
-			//		new NonCashAccount
-			//		{
-			//			Description = "Non-Cash account"
-			//		}
-			//	};
-			
-
-			//foreach (var account in accounts)
-			//{
-			//	budget.AddAccount(account);				
-			//}
-				
-				
-			
+						
 			return budget;
 		}
 	}
