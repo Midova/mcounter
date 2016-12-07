@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MoneyCounter.Data.Model;
+using System;
 
 namespace MoneyCounter.Tests
 {
@@ -22,6 +23,12 @@ namespace MoneyCounter.Tests
 		{
 			var session = new Session();
 			session.Initialize(PopulateData());
+			session.OperationTemplates.Add(new OperationTemplate()
+			{
+				OperationName = "шаблон1",
+				Tags = { "дом", "ремонт" },
+				Value = 5
+			});
 
 			Session.Save(SessionFilePath, session);
 		}
@@ -42,22 +49,50 @@ namespace MoneyCounter.Tests
 		private Budget PopulateData()
 		{
 			var budget = new Budget();
-			var accounts = 
-				new Account[] 
-				{
-					new CashAccount
-					{
-						Description = "Cash account"
-					},
-					new NonCashAccount
-					{
-						Description = "Non-Cash account"
-					}
-				};
+			
+			var account1 = new CashAccount { Description = "Cash account" };
+			account1.AddOperation(new MoneyOperation()
+			{
+				OperationName = "Зарплата",
+				OperationDate = DateTime.Today,
+				Tags = { "Вова"},
+				Value = 5
+			});
 
-			foreach (var account in accounts)
-				budget.AddAccount(account);
+			var account2 = new NonCashAccount { Description = "Non-Cash account" };
+			account2.AddOperation(new MoneyOperation()
+			{
+				OperationName = "Налог",
+				OperationDate = new DateTime(2016, 12, 05),
+				Tags = { "Даша", "машина" },
+				Value = -2
+			});
 
+			budget.AddAccount(account1);
+			budget.AddAccount(account2);
+
+			//var accounts =
+			//	new Account[]
+			//	{
+			//		new CashAccount
+			//		{
+			//			Description = "Cash account",
+								
+			//		},
+			//		new NonCashAccount
+			//		{
+			//			Description = "Non-Cash account"
+			//		}
+			//	};
+			
+
+			//foreach (var account in accounts)
+			//{
+			//	budget.AddAccount(account);				
+			//}
+				
+				
+			
 			return budget;
 		}
 	}

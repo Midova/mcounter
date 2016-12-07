@@ -64,6 +64,12 @@ namespace MoneyCounter.Data.Model
 		/// <summary>
 		/// Получает коллекцию тегов всех операции в счете.
 		/// </summary>
-		public List<string> Tags => MoneyOperations.SelectMany(opration => opration.Tags).Distinct().ToList();		
+		public List<string> Tags => MoneyOperations.SelectMany(opration => opration.Tags).Distinct().ToList();
+
+		public void AddOperation(MoneyOperation operation)
+		{
+			 MoneyOperations.Add(operation);
+		}
+
 	}
 }
