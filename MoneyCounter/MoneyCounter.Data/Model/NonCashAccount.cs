@@ -1,14 +1,18 @@
 ﻿
+using System.Runtime.Serialization;
+
 namespace MoneyCounter.Data.Model
 {
 	/// <summary>
 	/// Cчет с безналичными дньгами.
 	/// </summary>
-	public class NonChashAccount : Account
+	[DataContract]
+	public class NonCashAccount : Account
 	{
 		/// <summary>
 		/// Получает или задает номер счета.
 		/// </summary>
+		[DataMember(Name = nameof(AccountNumber))]
 		public string _AccountNumber;
 
 		/// <summary>

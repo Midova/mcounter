@@ -1,12 +1,14 @@
 ﻿using System;
 using Catel.Data;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace MoneyCounter.Data.Model
 {
 	/// <summary>
 	/// Класс операций с деньгами.
 	/// </summary>
+	[DataContract]
 	public class MoneyOperation : ObservableObject
 	{
 		public MoneyOperation()
@@ -17,6 +19,7 @@ namespace MoneyCounter.Data.Model
 		/// <summary>
 		/// Получает или задает имя операции.
 		/// </summary>
+		[DataMember(Name = nameof(OperationName))]
 		private string _OperationName;
 
 		/// <summary>
@@ -34,10 +37,11 @@ namespace MoneyCounter.Data.Model
 				RaisePropertyChanged(nameof(OperationName));
 			}
 		}
-		
+
 		/// <summary>
 		/// Получает или задает величину денежной операции.
 		/// </summary>
+		[DataMember(Name = nameof(Value))]
 		private double _Value;
 
 		/// <summary>
@@ -65,6 +69,7 @@ namespace MoneyCounter.Data.Model
 		/// <summary>
 		/// Получает и задает дату проведения операции.
 		/// </summary>
+		[DataMember(Name = nameof(OperationDate))]
 		private DateTime _OperationDate;
 
 		/// <summary>
@@ -86,6 +91,7 @@ namespace MoneyCounter.Data.Model
 		/// <summary>
 		/// Получает или задает коллекцию тегов операции.
 		/// </summary>
+		[DataMember]
 		public List<string> Tags { get; private set; }
 	}
 }

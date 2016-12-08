@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,7 +48,7 @@
     <Compile Include="Model\Budget.cs" />
     <Compile Include="Model\CashAccount.cs" />
     <Compile Include="Model\MoneyOperation.cs" />
-    <Compile Include="Model\NonChashAccount.cs" />
+    <Compile Include="Model\NonCashAccount.cs" />
     <Compile Include="Model\OperationDirection.cs" />
     <Compile Include="Model\OperationTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

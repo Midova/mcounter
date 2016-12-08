@@ -9,12 +9,12 @@ namespace MoneyCounter.Data.Model
 	/// <summary>
 	/// Счет с операциями.
 	/// </summary>
+	[DataContract]
 	public abstract class Account : ObservableObject
 	{
 		public Account()
 		{
-			MoneyOperations = new ObservableCollection<MoneyOperation>();
-			OperationTemplates = new ObservableCollection<OperationTemplate>();			
+			MoneyOperations = new ObservableCollection<MoneyOperation>();			
 			MoneyOperations.CollectionChanged += (sender, args) => RaisePropertyChanged(nameof(Balance));
 		}
 
@@ -31,11 +31,12 @@ namespace MoneyCounter.Data.Model
 		/// <summary>
 		/// Получает или задает описание счета.
 		/// </summary>
+		[DataMember(Name = nameof(Description))]
 		private string _Description;
 
 		/// <summary>
 		/// Получает или задает описание счета.
-		/// </summary>
+		/// </summary>		
 		public string Description
 		{
 			get { return _Description; }
@@ -57,16 +58,18 @@ namespace MoneyCounter.Data.Model
 		/// <summary>
 		/// Получает список операций.
 		/// </summary>
-		public ObservableCollection<MoneyOperation> MoneyOperations { get; }
-
-		/// <summary>
-		/// Получает список шаблонов операций.
-		/// </summary>
-		public ObservableCollection<OperationTemplate> OperationTemplates { get; }
+		[DataMember]
+		public ObservableCollection<MoneyOperation> MoneyOperations { get; }		
 
 		/// <summary>
 		/// Получает коллекцию тегов всех операции в счете.
 		/// </summary>
-		public List<string> Tags => MoneyOperations.SelectMany(opration => opration.Tags).Distinct().ToList();		
+		public List<string> Tags => MoneyOperations.SelectMany(opration => opration.Tags).Distinct().ToList();
+
+		public void AddOperation(MoneyOperation operation)
+		{
+			 MoneyOperations.Add(operation);
+		}
+
 	}
 }
