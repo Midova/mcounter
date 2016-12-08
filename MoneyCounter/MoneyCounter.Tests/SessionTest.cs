@@ -49,9 +49,9 @@ namespace MoneyCounter.Tests
 		private Budget PopulateData()
 		{
 			var budget = new Budget();
-			
-			var account1 = new CashAccount { Description = "Cash account" };
-			account1.AddOperation(new MoneyOperation()
+
+			var cashAccount = new CashAccount { Description = "Cash account" };
+			cashAccount.AddOperation(new MoneyOperation()
 			{
 				OperationName = "Зарплата",
 				OperationDate = DateTime.Today,
@@ -59,8 +59,8 @@ namespace MoneyCounter.Tests
 				Value = 5
 			});
 
-			var account2 = new NonCashAccount { Description = "Non-Cash account" };
-			account2.AddOperation(new MoneyOperation()
+			var nonCashaccount = new NonCashAccount { Description = "Non-Cash account" };
+			nonCashaccount.AddOperation(new MoneyOperation()
 			{
 				OperationName = "Налог",
 				OperationDate = new DateTime(2016, 12, 05),
@@ -68,8 +68,8 @@ namespace MoneyCounter.Tests
 				Value = -2
 			});
 
-			budget.AddAccount(account1);
-			budget.AddAccount(account2);
+			budget.AddAccount(cashAccount);
+			budget.AddAccount(nonCashaccount);
 						
 			return budget;
 		}
