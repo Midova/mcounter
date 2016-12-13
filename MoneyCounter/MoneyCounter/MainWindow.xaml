@@ -49,7 +49,8 @@
                     <MenuItem.Icon>
                         <Image Source="Resources/Images/help.png"/>
                     </MenuItem.Icon>
-                </MenuItem>            
+                </MenuItem>
+            
         </Menu>
         
     </Grid>
