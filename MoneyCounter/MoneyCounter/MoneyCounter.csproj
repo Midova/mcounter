@@ -78,6 +78,8 @@
     </Compile>
     <Compile Include="Services\IOpenProjectFileService.cs" />
     <Compile Include="Services\ISaveProjectFileService.cs" />
+    <Compile Include="Services\OpenProjectFileService.cs" />
+    <Compile Include="Services\SaveProjectFileService.cs" />
     <Compile Include="Session.cs" />
   </ItemGroup>
   <ItemGroup>
