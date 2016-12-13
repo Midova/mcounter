@@ -76,6 +76,8 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\IOpenProjectFileService.cs" />
+    <Compile Include="Services\ISaveProjectFileService.cs" />
     <Compile Include="Session.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -105,7 +107,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MoneyCounter.Data\MoneyCounter.Data.csproj">
