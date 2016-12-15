@@ -32,7 +32,7 @@ namespace MoneyCounter.Tests
 			var result = saveFileService.SaveProjectFile(out path);
 
 
-			if ((result != true) || (String.IsNullOrEmpty(path)))
+			if (result != true)
 				return;
 
 			Session.Save(path, session);
@@ -49,10 +49,10 @@ namespace MoneyCounter.Tests
 
 			var result = openFileService.OpenProjectFile(out path);
 
-			if ((result != true) || (String.IsNullOrEmpty(path)))
+			if (result != true)
 				return;
 
-			Assert.IsNotNull(Session.Load(SessionFilePath));			
+			Assert.IsNotNull(Session.Load(path));			
 		}
 
 		/// <summary>
