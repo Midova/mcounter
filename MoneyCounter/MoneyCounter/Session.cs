@@ -15,6 +15,11 @@ namespace MoneyCounter
 	[DataContract]
 	public class Session : ISession
 	{
+		/// <summary>
+		/// Разрешение файла, для сохранения данной сессии.
+		/// </summary>
+		public const string FileExtension = ".mcounter";
+
 		public Session()
 		{
 			OperationTemplates = new ObservableCollection<OperationTemplate>();

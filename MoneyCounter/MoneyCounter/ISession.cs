@@ -8,7 +8,7 @@ namespace MoneyCounter
 	/// Интерфейс для классов содержащих оперативные данные пользователя.
 	/// </summary>
 	public interface ISession
-	{
+	{		
 		/// <summary>
 		/// Получает бюджет.
 		/// </summary>

@@ -17,7 +17,7 @@ namespace MoneyCounter.Services
 			var dialog = new OpenFileDialog()
 			{				
 				Multiselect = false,
-				DefaultExt = ".mcounter",
+				DefaultExt = Session.FileExtension,
 				Filter = "Budget file|*.mcounter"
 			};
 

@@ -16,7 +16,7 @@ namespace MoneyCounter.Services
 		{
 			var dialog = new SaveFileDialog()
 			{
-				DefaultExt = ".mcounter"
+				DefaultExt = Session.FileExtension
 			};
 
 			var result = dialog.ShowDialog();
