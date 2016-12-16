@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MoneyCounter.Data.Model;
+using MoneyCounter.Services;
 using System;
 
 namespace MoneyCounter.Tests
@@ -11,11 +12,6 @@ namespace MoneyCounter.Tests
 	public class SessionTest
 	{
 		/// <summary>
-		/// Адресс файла для теста.
-		/// </summary>
-		private const string SessionFilePath = "session.mcounter";
-
-		/// <summary>
 		/// Тест метода Save в классе Session.
 		/// </summary>
 		[TestMethod]	
@@ -25,12 +21,21 @@ namespace MoneyCounter.Tests
 			session.Initialize(PopulateData());
 			session.OperationTemplates.Add(new OperationTemplate()
 			{
-				OperationName = "шаблон1",
+				OperationName = "шаблон5",
 				Tags = { "дом", "ремонт" },
 				Value = 5
 			});
+						
+			var saveFileService = new SaveProjectFileService();
 
-			Session.Save(SessionFilePath, session);
+			string path;
+			var result = saveFileService.SaveProjectFile(out path);
+
+
+			if (result != true)
+				return;
+
+			Session.Save(path, session);
 		}
 
 		/// <summary>
@@ -39,7 +44,15 @@ namespace MoneyCounter.Tests
 		[TestMethod]
 		public void Session_Load()
 		{
-			Assert.IsNotNull(Session.Load(SessionFilePath));			
+			string path;
+			var openFileService = new OpenProjectFileService();
+
+			var result = openFileService.OpenProjectFile(out path);
+
+			if (result != true)
+				return;
+
+			Assert.IsNotNull(Session.Load(path));			
 		}
 
 		/// <summary>
