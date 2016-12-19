@@ -1,22 +1,27 @@
 ﻿using Catel.MVVM;
 using MoneyCounter.Services;
+using System.IO;
 using System.Windows.Input;
+using System;
 
 namespace MoneyCounter
 {
 	public class MainViewModel
 	{		
 		public MainViewModel(IOpenProjectFileService fileOpenDialogService,
-			ISaveProjectFileService fileSaveDialogService)
+			ISaveProjectFileService fileSaveDialogService, IConfirmationRequestService confirmationRequestService)
 		{
 			_FileOpenDialogService = fileOpenDialogService;
 			_FileSaveDialogService = fileSaveDialogService;
+			_ConfirmationRequestService = confirmationRequestService;
 
 			LoadSessionCommand = new Command(LoadSession);
 			SaveSessionCommand = new Command(SaveSession);
 			SaveAsSessionCommand = new Command(SaveAsSession);
-		}
 
+			CloseSessionCommand = new Command(CloseSession, CanCloseSession);
+		}
+				
 		/// <summary>
 		/// Сервис загрузки данных из файла.
 		/// </summary>
@@ -26,6 +31,11 @@ namespace MoneyCounter
 		/// Сервис сохранения данных в файл.
 		/// </summary>
 		private ISaveProjectFileService _FileSaveDialogService;
+
+		/// <summary>
+		/// Сервис работы с окном сообщений.
+		/// </summary>
+		private IConfirmationRequestService _ConfirmationRequestService;
 
 		/// <summary>
 		/// Текущая загруженная сессия.
@@ -75,11 +85,42 @@ namespace MoneyCounter
 		/// <summary>
 		/// Получает обработчик закрытия сессии.
 		/// </summary>
-		public ICommand ClosingSessionCommand { get; private set; }
+		public ICommand CloseSessionCommand { get; private set; }
 
-		private void ClosingSession()
+		/// <summary>
+		/// Закрытие сессии, с сохранением или без.
+		/// </summary>
+		private void CloseSession()
 		{
+			if (Session.IsDerty)
+			{
+				var result = _ConfirmationRequestService
+					.RequestConfirmation("", "Внимание", System.Windows.MessageBoxButton.OKCancel, System.Windows.MessageBoxImage.Warning);
 
+				if (result == System.Windows.MessageBoxResult.OK)
+				{
+					if (File.Exists(Session.FilePath))
+					{
+						var savePath = string.Empty;
+						if (_FileSaveDialogService.SaveProjectFile(out savePath) ?? false)
+							Session.FilePath = savePath;
+						else
+							return;
+					}
+
+					Session.Save(Session.FilePath, Session);
+				}
+			}
 		}
+
+		/// <summary>
+		/// Загружалась ли сессия.
+		/// </summary>
+		/// <returns>Правда- если сессия заполнена, ложь- иначе.</returns>
+		private bool CanCloseSession()
+		{
+			return Session != null;
+		}
+
 	}
 }

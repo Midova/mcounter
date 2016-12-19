@@ -58,6 +58,11 @@ namespace MoneyCounter
 		public List<string> Tags => Budget.Accounts.SelectMany(opration => opration.Tags).Distinct().ToList();
 
 		/// <summary>
+		/// Получает или задает путь к сессии.
+		/// </summary>
+		public string FilePath { get; internal set; }
+
+		/// <summary>
 		/// Выполняет дисериализацию сессии из указанного файла.
 		/// </summary>
 		/// <param name="filePath">Путь к файлу.</param>
