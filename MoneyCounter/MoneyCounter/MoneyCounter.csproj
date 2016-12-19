@@ -88,6 +88,8 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\ConfirmationRequestService.cs" />
+    <Compile Include="Services\IConfirmationRequestService.cs" />
     <Compile Include="Services\IOpenProjectFileService.cs" />
     <Compile Include="Services\ISaveProjectFileService.cs" />
     <Compile Include="Services\OpenProjectFileService.cs" />

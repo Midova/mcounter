@@ -39,6 +39,11 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
+                <MenuItem Header="Закрыть сессию" Command="{Binding  ClosingSessionCommand}"> 
+                    <MenuItem.Icon>
+                        <Image Source="Resources/Images/cross.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
                 <MenuItem Header="Выход">
                     <MenuItem.Icon>
                         <Image Source="Resources/Images/cross.png"/>

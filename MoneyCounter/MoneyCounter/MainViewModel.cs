@@ -76,5 +76,10 @@ namespace MoneyCounter
 		/// Получает обработчик закрытия сессии.
 		/// </summary>
 		public ICommand ClosingSessionCommand { get; private set; }
+
+		private void ClosingSession()
+		{
+
+		}
 	}
 }
