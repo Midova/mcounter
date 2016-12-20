@@ -60,7 +60,7 @@ namespace MoneyCounter
 		/// <summary>
 		/// Получает или задает путь к сессии.
 		/// </summary>
-		public string FilePath { get; internal set; }
+		public string FilePath { get; set; }
 
 		/// <summary>
 		/// Выполняет дисериализацию сессии из указанного файла.

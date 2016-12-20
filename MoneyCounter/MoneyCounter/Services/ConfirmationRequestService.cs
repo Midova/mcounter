@@ -12,8 +12,8 @@ namespace MoneyCounter.Services
 		/// </summary>
 		/// <param name="text">Текст сообщеня.</param>
 		/// <param name="caption">Заголовок сообщения.</param>
-		/// <param name="buttons"></param>
-		/// <param name="image"></param>
+		/// <param name="buttons">Кнопки сообщения.</param>
+		/// <param name="image">Знак сообщения.</param>
 		/// <returns>Резльта выбора пользователя.</returns>
 		public MessageBoxResult RequestConfirmation(string text, string caption, MessageBoxButton buttons, MessageBoxImage image)
 		{
