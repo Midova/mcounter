@@ -48,7 +48,7 @@ namespace MoneyCounter
 		/// Текущая загруженная сессия.
 		/// </summary>
 		public Session Session { get; private set; }
-
+		
 		/// <summary>
 		/// Получает обработчик загрузки проекта из файла.
 		/// </summary>
@@ -59,7 +59,7 @@ namespace MoneyCounter
 		/// </summary>
 		private void LoadSession()
 		{
-
+			throw new NotImplementedException();
 		}
 
 		/// <summary>
@@ -72,7 +72,7 @@ namespace MoneyCounter
 		/// </summary>
 		private void SaveSession()
 		{
-
+			throw new NotImplementedException();
 		}
 
 		/// <summary>
@@ -85,7 +85,7 @@ namespace MoneyCounter
 		/// </summary>
 		private void SaveAsSession()
 		{
-
+			throw new NotImplementedException();
 		}
 
 		/// <summary>
