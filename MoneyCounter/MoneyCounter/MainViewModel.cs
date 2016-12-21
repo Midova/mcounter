@@ -21,14 +21,21 @@ namespace MoneyCounter
 			Session = new Session();
 
 			LoadSessionCommand = new Command(LoadSession);
-			SaveSessionCommand = new Command(SaveSession);
+			SaveSessionCommand = new Command(SaveSession, ChangedSession);
 			SaveAsSessionCommand = new Command(SaveAsSession);
 
 			CloseSessionCommand = new Command(CloseSession, CanCloseSession);
+
+			PropertyChanged += MainViewModel_PropertyChanged;		
+		}
+
+		private void MainViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+		{
+			((Command)CloseSessionCommand).RaiseCanExecuteChanged();
 		}
 
 		#region Infrastructure
-				       
+
 		/// <summary>
 		/// Сервис загрузки данных из файла.
 		/// </summary>
@@ -140,6 +147,12 @@ namespace MoneyCounter
 		/// </summary>
 		/// <returns>Правда- если сессия заполнена, ложь- иначе.</returns>
 		private bool CanCloseSession() => Session != null;
-				
+
+		/// <summary>
+		/// Изменялась ли сессия.
+		/// </summary>
+		/// <returns>Правда- сессия менялась, ложь - иначе.</returns>
+		private bool ChangedSession() => Session.IsDerty == true;
+			
 	}
 }
