@@ -5,7 +5,7 @@ namespace MoneyCounter.Services
 	/// <summary>
 	/// Сервис сохранения в файл.
 	/// </summary>
-	public class SaveProjectFileService
+	public class SaveProjectFileService : ISaveProjectFileService
 	{
 		/// <summary>
 		/// Открывает дилог выбора файла.

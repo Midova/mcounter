@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoneyCounter.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,16 @@ namespace MoneyCounter
 		public MainWindow()
 		{
 			InitializeComponent();
+			Loaded += MainWindow_Loaded;
+		}
+
+		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+		{
+			var openFileService = new OpenProjectFileService();
+			var saveFileService = new SaveProjectFileService();
+			var confirmationRequestService = new ConfirmationRequestService();
+
+			DataContext = new MainViewModel(openFileService, saveFileService, confirmationRequestService);
 		}
 	}
 }

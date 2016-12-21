@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoneyCounter.Services;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -12,6 +13,6 @@ namespace MoneyCounter
 	/// Логика взаимодействия для App.xaml
 	/// </summary>
 	public partial class App : Application
-	{
+	{		
 	}
 }

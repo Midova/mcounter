@@ -18,6 +18,7 @@ namespace MoneyCounter
 			_FileOpenDialogService = fileOpenDialogService;
 			_FileSaveDialogService = fileSaveDialogService;
 			_ConfirmationRequestService = confirmationRequestService;
+			Session = new Session();
 
 			LoadSessionCommand = new Command(LoadSession);
 			SaveSessionCommand = new Command(SaveSession);
@@ -59,7 +60,15 @@ namespace MoneyCounter
 		/// </summary>
 		private void LoadSession()
 		{
-			throw new NotImplementedException();
+			string path;
+			var result = _FileOpenDialogService.OpenProjectFile(out path);
+
+			if (result != true)
+				return;
+
+			Session.Load(path);
+
+			Session.FilePath = path;
 		}
 
 		/// <summary>
@@ -72,7 +81,8 @@ namespace MoneyCounter
 		/// </summary>
 		private void SaveSession()
 		{
-			throw new NotImplementedException();
+			if (Session.FilePath != null)
+				Session.Save(Session.FilePath, Session);
 		}
 
 		/// <summary>
@@ -85,7 +95,13 @@ namespace MoneyCounter
 		/// </summary>
 		private void SaveAsSession()
 		{
-			throw new NotImplementedException();
+			string path;
+			var result = _FileSaveDialogService.SaveProjectFile(out path);
+
+			if (result != true)
+				return;
+
+			Session.Save(path, Session);
 		}
 
 		/// <summary>
