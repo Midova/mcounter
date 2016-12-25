@@ -32,6 +32,8 @@ namespace MoneyCounter
 		private void MainViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
 			((Command)CloseSessionCommand).RaiseCanExecuteChanged();
+			((Command)SaveAsSessionCommand).RaiseCanExecuteChanged();
+			((Command)SaveSessionCommand).RaiseCanExecuteChanged();
 		}
 
 		#region Infrastructure
@@ -67,13 +69,15 @@ namespace MoneyCounter
 		/// </summary>
 		private void LoadSession()
 		{
+			CloseSession();
+
 			string path;
 			var result = _FileOpenDialogService.OpenProjectFile(out path);
 
 			if (result != true)
 				return;
 
-			Session.Load(path);
+			Session = Session.Load(path);
 
 			Session.FilePath = path;
 		}
@@ -88,8 +92,10 @@ namespace MoneyCounter
 		/// </summary>
 		private void SaveSession()
 		{
-			if (Session.FilePath != null)
+			if (Session.FilePath != string.Empty)
 				Session.Save(Session.FilePath, Session);
+			else
+				SaveAsSession();
 		}
 
 		/// <summary>
@@ -127,19 +133,20 @@ namespace MoneyCounter
 			var result = _ConfirmationRequestService
 				.RequestConfirmation("Сессия не сохранена. Сохранить?", "Внимание", System.Windows.MessageBoxButton.OKCancel, System.Windows.MessageBoxImage.Warning);
 
-			if (result == System.Windows.MessageBoxResult.OK)
-			{
-				if (File.Exists(Session.FilePath))
-				{
-					var savePath = string.Empty;
-					if (_FileSaveDialogService.SaveProjectFile(out savePath) ?? false)
-						Session.FilePath = savePath;
-					else
-						return;
-				}
 
-				Session.Save(Session.FilePath, Session);
-			}			
+			if (result != System.Windows.MessageBoxResult.OK)
+				return;
+
+			if (File.Exists(Session.FilePath))
+			{
+				var savePath = string.Empty;
+				if (_FileSaveDialogService.SaveProjectFile(out savePath) ?? false)
+					Session.FilePath = savePath;
+				else
+					return;
+			}
+
+				Session.Save(Session.FilePath, Session);		
 		}
 
 		/// <summary>

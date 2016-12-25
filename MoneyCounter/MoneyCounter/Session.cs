@@ -18,6 +18,7 @@ namespace MoneyCounter
 		public Session()
 		{
 			OperationTemplates = new ObservableCollection<OperationTemplate>();
+			FilePath = string.Empty;
 		}
 
 		/// <summary>
