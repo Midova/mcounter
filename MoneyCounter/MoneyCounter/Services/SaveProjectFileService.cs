@@ -7,11 +7,7 @@ namespace MoneyCounter.Services
 	/// </summary>
 	public class SaveProjectFileService : ISaveProjectFileService
 	{
-		/// <summary>
-		/// Открывает дилог выбора файла.
-		/// </summary>
-		/// <param name="path">Возвращает путь к файлу</param>
-		/// <returns>Истина - пользовавтель выбрал файл. Ложь - отмена выбора.</returns>
+		/// <inheritdoc />
 		public bool? SaveProjectFile(out string path)
 		{
 			var dialog = new SaveFileDialog()

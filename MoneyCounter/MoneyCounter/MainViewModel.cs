@@ -29,6 +29,11 @@ namespace MoneyCounter
 			PropertyChanged += MainViewModel_PropertyChanged;		
 		}
 
+		/// <summary>
+		/// Изменение свойств модели главного окна.
+		/// </summary>
+		/// <param name="sender">Измененное свойство.</param>
+		/// <param name="e">Данные для события.</param>
 		private void MainViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
 			((Command)CloseSessionCommand).RaiseCanExecuteChanged();

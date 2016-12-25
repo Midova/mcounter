@@ -7,14 +7,7 @@ namespace MoneyCounter.Services
 	/// </summary>
 	public class ConfirmationRequestService : IConfirmationRequestService
 	{
-		/// <summary>
-		/// Вывает окно сообщения.
-		/// </summary>
-		/// <param name="text">Текст сообщеня.</param>
-		/// <param name="caption">Заголовок сообщения.</param>
-		/// <param name="buttons">Кнопки сообщения.</param>
-		/// <param name="image">Знак сообщения.</param>
-		/// <returns>Резльта выбора пользователя.</returns>
+		/// <inheritdoc />
 		public MessageBoxResult RequestConfirmation(string text, string caption, MessageBoxButton buttons, MessageBoxImage image)
 		{
 			return MessageBox.Show(text, caption, buttons, image);
