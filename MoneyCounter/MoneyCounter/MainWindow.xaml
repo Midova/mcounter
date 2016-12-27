@@ -17,7 +17,7 @@
                 <MenuItem.Icon>
                         <Image Source="Resources/Images/file_start_workflow.png"/>
                     </MenuItem.Icon>
-                <MenuItem Header="Новый проект" Command="{Binding CreationNewSessionCommand}">
+                <MenuItem Header="Новый проект" Command="{Binding CreateNewSessionCommand}">
                     <MenuItem.Icon>
                         <Image Source="Resources/Images/new.png"/>
                     </MenuItem.Icon>

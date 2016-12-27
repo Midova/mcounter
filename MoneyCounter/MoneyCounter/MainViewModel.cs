@@ -21,11 +21,11 @@ namespace MoneyCounter
 			Session = new Session();
 
 			LoadSessionCommand = new Command(LoadSession);
-			SaveSessionCommand = new Command(SaveSession, ChangedSession);
-			SaveAsSessionCommand = new Command(SaveAsSession);
+			SaveSessionCommand = new Command(SaveSession, CanSaveSession);
+			SaveAsSessionCommand = new Command(SaveAsSession, CanSaveSession);
 
 			CloseSessionCommand = new Command(CloseSession, CanCloseSession);
-			CreationNewSessionCommand = new Command(CreationNewSession);
+			CreateNewSessionCommand = new Command(CreateNewSession);
 					
 			PropertyChanged += MainViewModel_PropertyChanged;		
 		}
@@ -68,18 +68,17 @@ namespace MoneyCounter
 		/// <summary>
 		/// Получает обработчик создания новой сессии.
 		/// </summary>
-		public ICommand CreationNewSessionCommand { get; private set; }
+		public ICommand CreateNewSessionCommand { get; private set; }
 
 		/// <summary>
 		/// Cозданиe новой сессии.
 		/// </summary>
-		private void CreationNewSession()
+		private void CreateNewSession()
 		{
 			if (Session != null)
 				CloseSession();
 			
 			var newSession = new Session();
-			 
 		}  
 
 		/// <summary>
@@ -101,7 +100,6 @@ namespace MoneyCounter
 				return;
 
 			Session = Session.Load(path);
-
 			Session.FilePath = path;
 		}
 
@@ -155,13 +153,11 @@ namespace MoneyCounter
 
 			var result = _ConfirmationRequestService
 				.RequestConfirmation("Сессия не сохранена. Сохранить?", "Внимание", System.Windows.MessageBoxButton.OKCancel, System.Windows.MessageBoxImage.Warning);
-
-
+			
 			if (result != System.Windows.MessageBoxResult.OK)
 				return;
 
-			SaveSession(); 
-						
+			SaveSession();						
 		}
 
 		/// <summary>
@@ -174,7 +170,7 @@ namespace MoneyCounter
 		/// Изменялась ли сессия.
 		/// </summary>
 		/// <returns>Правда- сессия менялась, ложь - иначе.</returns>
-		private bool ChangedSession() => Session.IsDerty == true;
+		private bool CanSaveSession() => Session.IsDerty == true;
 			
 	}
 }

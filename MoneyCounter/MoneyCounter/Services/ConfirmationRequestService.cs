@@ -11,7 +11,6 @@ namespace MoneyCounter.Services
 		public MessageBoxResult RequestConfirmation(string text, string caption, MessageBoxButton buttons, MessageBoxImage image)
 		{
 			return MessageBox.Show(text, caption, buttons, image);
-		}
-				
+		}				
 	}
 }
