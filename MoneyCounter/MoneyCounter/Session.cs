@@ -19,6 +19,7 @@ namespace MoneyCounter
 		{
 			OperationTemplates = new ObservableCollection<OperationTemplate>();
 			FilePath = string.Empty;
+			IsDerty = false;
 		}
 
 		/// <summary>

@@ -25,7 +25,8 @@ namespace MoneyCounter
 			SaveAsSessionCommand = new Command(SaveAsSession);
 
 			CloseSessionCommand = new Command(CloseSession, CanCloseSession);
-
+			CreationNewSessionCommand = new Command(CreationNewSession);
+					
 			PropertyChanged += MainViewModel_PropertyChanged;		
 		}
 
@@ -63,7 +64,24 @@ namespace MoneyCounter
 		/// Текущая загруженная сессия.
 		/// </summary>
 		public Session Session { get; private set; }
-		
+
+		/// <summary>
+		/// Получает обработчик создания новой сессии.
+		/// </summary>
+		public ICommand CreationNewSessionCommand { get; private set; }
+
+		/// <summary>
+		/// Cозданиe новой сессии.
+		/// </summary>
+		private void CreationNewSession()
+		{
+			if (Session != null)
+				CloseSession();
+			
+			var newSession = new Session();
+			 
+		}  
+
 		/// <summary>
 		/// Получает обработчик загрузки проекта из файла.
 		/// </summary>
@@ -142,16 +160,8 @@ namespace MoneyCounter
 			if (result != System.Windows.MessageBoxResult.OK)
 				return;
 
-			if (File.Exists(Session.FilePath))
-			{
-				var savePath = string.Empty;
-				if (_FileSaveDialogService.SaveProjectFile(out savePath) ?? false)
-					Session.FilePath = savePath;
-				else
-					return;
-			}
-
-				Session.Save(Session.FilePath, Session);		
+			SaveSession(); 
+						
 		}
 
 		/// <summary>
