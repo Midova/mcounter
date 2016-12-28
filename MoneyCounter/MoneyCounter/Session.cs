@@ -18,6 +18,8 @@ namespace MoneyCounter
 		public Session()
 		{
 			OperationTemplates = new ObservableCollection<OperationTemplate>();
+			FilePath = string.Empty;
+			IsDerty = false;
 		}
 
 		/// <summary>
@@ -56,6 +58,11 @@ namespace MoneyCounter
 		/// Получает теги из операций счетов текущего бюджета.
 		/// </summary>		
 		public List<string> Tags => Budget.Accounts.SelectMany(opration => opration.Tags).Distinct().ToList();
+
+		/// <summary>
+		/// Получает или задает путь к сессии.
+		/// </summary>
+		public string FilePath { get; set; }
 
 		/// <summary>
 		/// Выполняет дисериализацию сессии из указанного файла.

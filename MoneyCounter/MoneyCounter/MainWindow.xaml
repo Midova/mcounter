@@ -17,28 +17,33 @@
                 <MenuItem.Icon>
                         <Image Source="Resources/Images/file_start_workflow.png"/>
                     </MenuItem.Icon>
-                <MenuItem Header="Новый проект">
+                <MenuItem Header="Новый проект" Command="{Binding CreateNewSessionCommand}">
                     <MenuItem.Icon>
                         <Image Source="Resources/Images/new.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Открыть проект">
+                <MenuItem Header="Открыть проект" Command="{Binding LoadSessionCommand}">
                     <MenuItem.Icon>
                         <Image Source="Resources/Images/nameboard_open.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
-                <MenuItem Header="Сохранить">
+                <MenuItem Header="Сохранить" Command="{Binding SaveSessionCommand}">
                     <MenuItem.Icon>
                         <Image Source="Resources/Images/save_close.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Сохранить как...">
+                <MenuItem Header="Сохранить как..." Command="{Binding SaveAsSessionCommand}">
                     <MenuItem.Icon>
                         <Image Source="Resources/Images/save_as.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
+                <MenuItem Header="Закрыть сессию" Command="{Binding  CloseSessionCommand}"> 
+                    <MenuItem.Icon>
+                        <Image Source="Resources/Images/cross.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
                 <MenuItem Header="Выход">
                     <MenuItem.Icon>
                         <Image Source="Resources/Images/cross.png"/>
