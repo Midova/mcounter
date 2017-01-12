@@ -94,10 +94,12 @@
     <Compile Include="Services\ISaveProjectFileService.cs" />
     <Compile Include="Services\OpenProjectFileService.cs" />
     <Compile Include="Services\SaveProjectFileService.cs" />
-    <Compile Include="Session.cs" />
+    <Compile Include="Session\Project.cs" />
+    <Compile Include="Session\ISessionManager.cs" />
+    <Compile Include="Session\SessionManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ISession.cs" />
+    <Compile Include="Session\IProject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -141,8 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Operations\" />
-    <Folder Include="Session\" />
-    <Folder Include="Templates\" />
+    <Folder Include="Session\Templates\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\cross.png" />

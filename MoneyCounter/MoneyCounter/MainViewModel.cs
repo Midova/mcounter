@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows.Input;
 using System;
 using Catel.Data;
+using MoneyCounter.Session;
 
 namespace MoneyCounter
 {
@@ -18,14 +19,14 @@ namespace MoneyCounter
 			_FileOpenDialogService = fileOpenDialogService;
 			_FileSaveDialogService = fileSaveDialogService;
 			_ConfirmationRequestService = confirmationRequestService;
-			Session = new Session();
+			Project = new Project();
 
-			LoadSessionCommand = new Command(LoadSession);
-			SaveSessionCommand = new Command(SaveSession, CanSaveSession);
-			SaveAsSessionCommand = new Command(SaveAsSession, CanSaveSession);
+			LoadProjectCommand = new Command(LoadProject);
+			SaveProjectCommand = new Command(SaveProject, CanSaveProject);
+			SaveAsProjectCommand = new Command(SaveAsProject);
 
-			CloseSessionCommand = new Command(CloseSession, CanCloseSession);
-			CreateNewSessionCommand = new Command(CreateNewSession);
+			CloseProjectCommand = new Command(CloseProject, CanCloseProject);
+			CreateNewProjectCommand = new Command(CreateNewProject);
 					
 			PropertyChanged += MainViewModel_PropertyChanged;		
 		}
@@ -37,9 +38,9 @@ namespace MoneyCounter
 		/// <param name="e">Данные для события.</param>
 		private void MainViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
-			((Command)CloseSessionCommand).RaiseCanExecuteChanged();
-			((Command)SaveAsSessionCommand).RaiseCanExecuteChanged();
-			((Command)SaveSessionCommand).RaiseCanExecuteChanged();
+			((Command)CloseProjectCommand).RaiseCanExecuteChanged();
+			((Command)SaveAsProjectCommand).RaiseCanExecuteChanged();
+			((Command)SaveProjectCommand).RaiseCanExecuteChanged();
 		}
 
 		#region Infrastructure
@@ -63,35 +64,35 @@ namespace MoneyCounter
 		/// <summary>
 		/// Текущая загруженная сессия.
 		/// </summary>
-		public Session Session { get; private set; }
+		public Project Project { get; private set; }
 
 		/// <summary>
-		/// Получает обработчик создания новой сессии.
+		/// Получает обработчик создания нового проекта.
 		/// </summary>
-		public ICommand CreateNewSessionCommand { get; private set; }
+		public ICommand CreateNewProjectCommand { get; private set; }
 
 		/// <summary>
 		/// Cозданиe новой сессии.
 		/// </summary>
-		private void CreateNewSession()
+		private void CreateNewProject()
 		{
-			if (Session != null)
-				CloseSession();
-			
-			var newSession = new Session();
+			if (Project != null)
+				CloseProject();
+
+			var newProject = new Project();
 		}  
 
 		/// <summary>
 		/// Получает обработчик загрузки проекта из файла.
 		/// </summary>
-		public ICommand LoadSessionCommand { get; private set; }
+		public ICommand LoadProjectCommand { get; private set; }
 
 		/// <summary>
 		/// Загрузка проекта из файла.
 		/// </summary>
-		private void LoadSession()
+		private void LoadProject()
 		{
-			CloseSession();
+			CloseProject();
 
 			string path;
 			var result = _FileOpenDialogService.OpenProjectFile(out path);
@@ -99,35 +100,35 @@ namespace MoneyCounter
 			if (result != true)
 				return;
 
-			Session = Session.Load(path);
-			Session.FilePath = path;
+			Project = Project.Load(path);
+			Project.FilePath = path;
 		}
 
 		/// <summary>
 		/// Получает обработчик сохранения проекта в файл.
 		/// </summary>
-		public ICommand SaveSessionCommand { get; private set; }
+		public ICommand SaveProjectCommand { get; private set; }
 
 		/// <summary>
 		/// Сохранение проекта в файл.
 		/// </summary>
-		private void SaveSession()
+		private void SaveProject()
 		{
-			if (Session.FilePath != string.Empty)
-				Session.Save(Session.FilePath, Session);
+			if (Project.FilePath != string.Empty)
+				Project.Save(Project.FilePath, Project);
 			else
-				SaveAsSession();
+				SaveAsProject();
 		}
 
 		/// <summary>
 		/// Получает обработчик сохранения проекта в файл по новому адресу.
 		/// </summary>
-		public ICommand SaveAsSessionCommand { get; private set; }
+		public ICommand SaveAsProjectCommand { get; private set; }
 
 		/// <summary>
 		/// Cохранение проекта в файл по новому адресу.
 		/// </summary>
-		private void SaveAsSession()
+		private void SaveAsProject()
 		{
 			string path;
 			var result = _FileSaveDialogService.SaveProjectFile(out path);
@@ -135,20 +136,20 @@ namespace MoneyCounter
 			if (result != true)
 				return;
 
-			Session.Save(path, Session);
+			Project.Save(path, Project);
 		}
 
 		/// <summary>
 		/// Получает обработчик закрытия сессии.
 		/// </summary>
-		public ICommand CloseSessionCommand { get; private set; }
+		public ICommand CloseProjectCommand { get; private set; }
 
 		/// <summary>
 		/// Закрытие сессии, с сохранением или без.
 		/// </summary>
-		private void CloseSession()
+		private void CloseProject()
 		{
-			if (!Session.IsDerty)
+			if (!Project.IsDerty)
 				return;
 
 			var result = _ConfirmationRequestService
@@ -157,20 +158,20 @@ namespace MoneyCounter
 			if (result != System.Windows.MessageBoxResult.OK)
 				return;
 
-			SaveSession();						
+			SaveProject();						
 		}
 
 		/// <summary>
 		/// Загружалась ли сессия.
 		/// </summary>
 		/// <returns>Правда- если сессия заполнена, ложь- иначе.</returns>
-		private bool CanCloseSession() => Session != null;
+		private bool CanCloseProject() => Project != null;
 
 		/// <summary>
 		/// Изменялась ли сессия.
 		/// </summary>
 		/// <returns>Правда- сессия менялась, ложь - иначе.</returns>
-		private bool CanSaveSession() => Session.IsDerty == true;
+		private bool CanSaveProject() => Project.IsDerty == true;
 			
 	}
 }

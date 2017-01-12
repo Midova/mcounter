@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using MoneyCounter.Session;
 
 namespace MoneyCounter.Services
 {
@@ -13,7 +14,7 @@ namespace MoneyCounter.Services
 			var dialog = new OpenFileDialog()
 			{				
 				Multiselect = false,
-				DefaultExt = Session.FileExtension,
+				DefaultExt = Project.FileExtension,
 				Filter = "Budget file|*.mcounter"
 			};
 

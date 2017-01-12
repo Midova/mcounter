@@ -3,19 +3,18 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using MoneyCounter.Data.Model;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.IO;
 using System.Runtime.Serialization;
 
-namespace MoneyCounter
+namespace MoneyCounter.Session
 {
 	/// <summary>
 	/// Класс, содержащий оперативные данные пользователя.
 	/// </summary>	
 	[DataContract]
-	public class Session : ISession
+	public class Project : IProject
 	{		
-		public Session()
+		public Project()
 		{
 			OperationTemplates = new ObservableCollection<OperationTemplate>();
 			FilePath = string.Empty;
@@ -69,15 +68,15 @@ namespace MoneyCounter
 		/// </summary>
 		/// <param name="filePath">Путь к файлу.</param>
 		/// <returns>Сессия.</returns>
-		public static Session Load(string filePath)
+		public static Project Load(string filePath)
 		{			
 			if (!File.Exists(filePath))
 				return null;
 
-			Session result = null;
+			Project result = null;
 
 			var content = File.ReadAllText(filePath);
-			result = JsonConvert.DeserializeObject<Session>(content);
+			result = JsonConvert.DeserializeObject<Project>(content);
 			
 			return result;
 		}
@@ -87,7 +86,7 @@ namespace MoneyCounter
 		/// </summary>
 		/// <param name="filePath">Путь к файлу.</param>
 		/// <param name="session">Нынешняя сессия.</param>
-		public static void Save(string filePath, Session session)
+		public static void Save(string filePath, Project session)
 		{			
 			JsonSerializer serializer = new JsonSerializer();
 			

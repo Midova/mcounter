@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using MoneyCounter.Session;
 
 namespace MoneyCounter.Services
 {
@@ -12,7 +13,7 @@ namespace MoneyCounter.Services
 		{
 			var dialog = new SaveFileDialog()
 			{
-				DefaultExt = Session.FileExtension
+				DefaultExt = Project.FileExtension
 			};
 
 			var result = dialog.ShowDialog();
