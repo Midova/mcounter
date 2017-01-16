@@ -140,12 +140,12 @@ namespace MoneyCounter
 		}
 
 		/// <summary>
-		/// Получает обработчик закрытия сессии.
+		/// Получает обработчик закрытия проекта.
 		/// </summary>
 		public ICommand CloseProjectCommand { get; private set; }
 
 		/// <summary>
-		/// Закрытие сессии, с сохранением или без.
+		/// Закрытие проекта, с сохранением или без.
 		/// </summary>
 		private void CloseProject()
 		{
@@ -162,13 +162,13 @@ namespace MoneyCounter
 		}
 
 		/// <summary>
-		/// Загружалась ли сессия.
+		/// Загружался ли проект.
 		/// </summary>
 		/// <returns>Правда- если сессия заполнена, ложь- иначе.</returns>
 		private bool CanCloseProject() => Project != null;
 
 		/// <summary>
-		/// Изменялась ли сессия.
+		/// Изменялся ли проект.
 		/// </summary>
 		/// <returns>Правда- сессия менялась, ложь - иначе.</returns>
 		private bool CanSaveProject() => Project.IsDerty == true;
