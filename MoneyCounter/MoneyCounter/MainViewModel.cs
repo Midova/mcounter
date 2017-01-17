@@ -1,8 +1,6 @@
 ﻿using Catel.MVVM;
 using MoneyCounter.Services;
-using System.IO;
 using System.Windows.Input;
-using System;
 using Catel.Data;
 using MoneyCounter.Session;
 
@@ -21,12 +19,14 @@ namespace MoneyCounter
 			_ConfirmationRequestService = confirmationRequestService;
 			Project = new Project();
 
-			LoadProjectCommand = new Command(LoadProject);
-			SaveProjectCommand = new Command(SaveProject, CanSaveProject);
-			SaveAsProjectCommand = new Command(SaveAsProject);
+			SessionManager = new SessionManager(Project, _ConfirmationRequestService, _FileOpenDialogService, _FileSaveDialogService);
 
-			CloseProjectCommand = new Command(CloseProject, CanCloseProject);
-			CreateNewProjectCommand = new Command(CreateNewProject);
+			LoadProjectCommand = new Command(SessionManager.LoadProject);
+			SaveProjectCommand = new Command(SessionManager.SaveProject, SessionManager.CanSaveProject);
+			SaveAsProjectCommand = new Command(SessionManager.SaveAsProject);
+
+			CloseProjectCommand = new Command(SessionManager.CloseProject, SessionManager.CanCloseProject);
+			CreateNewProjectCommand = new Command(SessionManager.CreateNewProject);
 					
 			PropertyChanged += MainViewModel_PropertyChanged;		
 		}
@@ -59,10 +59,16 @@ namespace MoneyCounter
 		/// Сервис работы с окном сообщений.
 		/// </summary>
 		private IConfirmationRequestService _ConfirmationRequestService;
+
 		#endregion
 
 		/// <summary>
-		/// Текущая загруженная сессия.
+		/// Текущая сессия.
+		/// </summary>
+		public SessionManager SessionManager { get; }
+
+		/// <summary>
+		/// Текущий загруженный проект.
 		/// </summary>
 		public Project Project { get; private set; }
 
@@ -72,37 +78,9 @@ namespace MoneyCounter
 		public ICommand CreateNewProjectCommand { get; private set; }
 
 		/// <summary>
-		/// Cозданиe новой сессии.
-		/// </summary>
-		private void CreateNewProject()
-		{
-			if (Project != null)
-				CloseProject();
-
-			var newProject = new Project();
-		}  
-
-		/// <summary>
 		/// Получает обработчик загрузки проекта из файла.
 		/// </summary>
 		public ICommand LoadProjectCommand { get; private set; }
-
-		/// <summary>
-		/// Загрузка проекта из файла.
-		/// </summary>
-		private void LoadProject()
-		{
-			CloseProject();
-
-			string path;
-			var result = _FileOpenDialogService.OpenProjectFile(out path);
-
-			if (result != true)
-				return;
-
-			Project = Project.Load(path);
-			Project.FilePath = path;
-		}
 
 		/// <summary>
 		/// Получает обработчик сохранения проекта в файл.
@@ -110,68 +88,13 @@ namespace MoneyCounter
 		public ICommand SaveProjectCommand { get; private set; }
 
 		/// <summary>
-		/// Сохранение проекта в файл.
-		/// </summary>
-		private void SaveProject()
-		{
-			if (Project.FilePath != string.Empty)
-				Project.Save(Project.FilePath, Project);
-			else
-				SaveAsProject();
-		}
-
-		/// <summary>
 		/// Получает обработчик сохранения проекта в файл по новому адресу.
 		/// </summary>
 		public ICommand SaveAsProjectCommand { get; private set; }
 
 		/// <summary>
-		/// Cохранение проекта в файл по новому адресу.
-		/// </summary>
-		private void SaveAsProject()
-		{
-			string path;
-			var result = _FileSaveDialogService.SaveProjectFile(out path);
-
-			if (result != true)
-				return;
-
-			Project.Save(path, Project);
-		}
-
-		/// <summary>
 		/// Получает обработчик закрытия проекта.
 		/// </summary>
 		public ICommand CloseProjectCommand { get; private set; }
-
-		/// <summary>
-		/// Закрытие проекта, с сохранением или без.
-		/// </summary>
-		private void CloseProject()
-		{
-			if (!Project.IsDerty)
-				return;
-
-			var result = _ConfirmationRequestService
-				.RequestConfirmation("Сессия не сохранена. Сохранить?", "Внимание", System.Windows.MessageBoxButton.OKCancel, System.Windows.MessageBoxImage.Warning);
-			
-			if (result != System.Windows.MessageBoxResult.OK)
-				return;
-
-			SaveProject();						
-		}
-
-		/// <summary>
-		/// Загружался ли проект.
-		/// </summary>
-		/// <returns>Правда- если сессия заполнена, ложь- иначе.</returns>
-		private bool CanCloseProject() => Project != null;
-
-		/// <summary>
-		/// Изменялся ли проект.
-		/// </summary>
-		/// <returns>Правда- сессия менялась, ложь - иначе.</returns>
-		private bool CanSaveProject() => Project.IsDerty == true;
-			
 	}
 }

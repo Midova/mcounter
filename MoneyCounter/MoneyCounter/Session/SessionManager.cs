@@ -1,18 +1,10 @@
 ﻿using MoneyCounter.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoneyCounter.Session
 {
-	class SessionManager : ISessionManager
+	public class SessionManager : ISessionManager
 	{
-		private IConfirmationRequestService _ConfirmationRequestService;
-		private IOpenProjectFileService _FileOpenDialogService;
-		private ISaveProjectFileService _FileSaveDialogService;
-
 		public SessionManager(Project project, IConfirmationRequestService confirmationRequestService, IOpenProjectFileService fileOpenDialogService, ISaveProjectFileService fileSaveDialogService)
 		{
 			Project = project;
@@ -20,16 +12,31 @@ namespace MoneyCounter.Session
 			_FileOpenDialogService = fileOpenDialogService;
 			_FileSaveDialogService = fileSaveDialogService;
 		}
-		
+
+		/// <summary>
+		/// Сервис работы с окном сообщений.
+		/// </summary>
+		private IConfirmationRequestService _ConfirmationRequestService;
+
+		/// <summary>
+		/// Сервис загрузки данных из файла.
+		/// </summary>
+		private IOpenProjectFileService _FileOpenDialogService;
+
+		/// <summary>
+		/// Сервис сохранения данных в файл.
+		/// </summary>
+		private ISaveProjectFileService _FileSaveDialogService;
+
 		/// <inheritdoc />
 		public Project Project { get; private set; }
 
 		/// <inheritdoc />
 		public bool CanCloseProject() => Project != null;
-		
+
 		/// <inheritdoc />
 		public bool CanSaveProject() => Project.IsDerty == true;
-		
+
 		/// <inheritdoc />
 		public void CloseProject()
 		{
@@ -72,15 +79,6 @@ namespace MoneyCounter.Session
 		/// <inheritdoc />
 		public void SaveAsProject()
 		{
-			if (Project.FilePath != string.Empty)
-				Project.Save(Project.FilePath, Project);
-			else
-				SaveAsProject();
-		}
-
-		/// <inheritdoc />
-		public void SaveProject()
-		{
 			string path;
 			var result = _FileSaveDialogService.SaveProjectFile(out path);
 
@@ -88,6 +86,15 @@ namespace MoneyCounter.Session
 				return;
 
 			Project.Save(path, Project);
+		}
+
+		/// <inheritdoc />
+		public void SaveProject()
+		{
+			if (Project.FilePath != string.Empty)
+				Project.Save(Project.FilePath, Project);
+			else
+				SaveAsProject();
 		}
 	}
 }
