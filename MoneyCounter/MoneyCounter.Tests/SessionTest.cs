@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MoneyCounter.Data.Model;
+using MoneyCounter.Infrastructure.Session;
 using MoneyCounter.Services;
 using System;
 
@@ -17,7 +18,7 @@ namespace MoneyCounter.Tests
 		[TestMethod]	
 		public void Session_Save()
 		{
-			var session = new Session();
+			var session = new Project();
 			session.Initialize(PopulateData());
 			session.OperationTemplates.Add(new OperationTemplate()
 			{
@@ -35,7 +36,7 @@ namespace MoneyCounter.Tests
 			if (result != true)
 				return;
 
-			Session.Save(path, session);
+			Project.Save(path, session);
 		}
 
 		/// <summary>
@@ -52,7 +53,7 @@ namespace MoneyCounter.Tests
 			if (result != true)
 				return;
 
-			Assert.IsNotNull(Session.Load(path));			
+			Assert.IsNotNull(Project.Load(path));			
 		}
 
 		/// <summary>

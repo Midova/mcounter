@@ -39,7 +39,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
-                <MenuItem Header="Закрыть сессию" Command="{Binding  CloseProjectCommand}"> 
+                <MenuItem Header="Закрыть проект" Command="{Binding  CloseProjectCommand}"> 
                     <MenuItem.Icon>
                         <Image Source="Resources/Images/cross.png"/>
                     </MenuItem.Icon>

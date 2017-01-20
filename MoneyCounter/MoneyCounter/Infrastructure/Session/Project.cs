@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Runtime.Serialization;
 
-namespace MoneyCounter.Session
+namespace MoneyCounter.Infrastructure.Session
 {
 	/// <summary>
 	/// Класс, содержащий оперативные данные пользователя.

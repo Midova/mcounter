@@ -1,4 +1,4 @@
-﻿namespace MoneyCounter.Session
+﻿namespace MoneyCounter.Infrastructure.Session
 {
 	public interface ISessionManager
 	{

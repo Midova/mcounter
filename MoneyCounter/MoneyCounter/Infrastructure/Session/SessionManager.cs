@@ -1,7 +1,6 @@
 ﻿using MoneyCounter.Services;
-using System;
 
-namespace MoneyCounter.Session
+namespace MoneyCounter.Infrastructure.Session
 {
 	/// <summary>
 	/// Класс управления проектом.

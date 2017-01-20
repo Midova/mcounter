@@ -1,5 +1,5 @@
 ﻿using Microsoft.Win32;
-using MoneyCounter.Session;
+using MoneyCounter.Infrastructure.Session;
 
 namespace MoneyCounter.Services
 {

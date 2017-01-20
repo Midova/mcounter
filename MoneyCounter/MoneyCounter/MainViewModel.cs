@@ -2,7 +2,7 @@
 using MoneyCounter.Services;
 using System.Windows.Input;
 using Catel.Data;
-using MoneyCounter.Session;
+using MoneyCounter.Infrastructure.Session;
 
 namespace MoneyCounter
 {
