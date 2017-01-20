@@ -46,12 +46,12 @@ namespace MoneyCounter
 		#region Infrastructure
 
 		/// <summary>
-		/// Сервис загрузки данных из файла.
+		/// Сервис выбора пути к файлу проекта.
 		/// </summary>
 		private IOpenProjectFileService _FileOpenDialogService;
 
 		/// <summary>
-		/// Сервис сохранения данных в файл.
+		/// Сервис для выбора файла сохранения проекта.
 		/// </summary>
 		private ISaveProjectFileService _FileSaveDialogService;
 
@@ -63,7 +63,7 @@ namespace MoneyCounter
 		#endregion
 
 		/// <summary>
-		/// Текущая сессия.
+		/// Менеджер сессии.
 		/// </summary>
 		public SessionManager SessionManager { get; }
 

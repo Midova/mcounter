@@ -3,8 +3,11 @@ using System;
 
 namespace MoneyCounter.Session
 {
+	/// <summary>
+	/// Класс управления проектом.
+	/// </summary>
 	public class SessionManager : ISessionManager
-	{
+	{		
 		public SessionManager(Project project, IConfirmationRequestService confirmationRequestService, IOpenProjectFileService fileOpenDialogService, ISaveProjectFileService fileSaveDialogService)
 		{
 			Project = project;
@@ -19,12 +22,12 @@ namespace MoneyCounter.Session
 		private IConfirmationRequestService _ConfirmationRequestService;
 
 		/// <summary>
-		/// Сервис загрузки данных из файла.
+		/// Сервис выбора пути к файлу проекта.
 		/// </summary>
 		private IOpenProjectFileService _FileOpenDialogService;
 
 		/// <summary>
-		/// Сервис сохранения данных в файл.
+		/// Сервис для выбора файла сохранения проекта.
 		/// </summary>
 		private ISaveProjectFileService _FileSaveDialogService;
 
@@ -49,7 +52,7 @@ namespace MoneyCounter.Session
 			if (result != System.Windows.MessageBoxResult.OK)
 				return;
 
-			SaveProject(); throw new NotImplementedException();
+			SaveProject();
 		}
 
 		/// <inheritdoc />

@@ -22,12 +22,12 @@ namespace MoneyCounter.Session
 		}
 
 		/// <summary>
-		/// Разрешение файла, для сохранения данной сессии.
+		/// Разрешение файла, для сохранения данного проекта.
 		/// </summary>
 		public const string FileExtension = ".mcounter";
 
 		/// <summary>
-		/// Инициализирует сессию.
+		/// Инициализирует проект.
 		/// </summary>
 		/// <param name="budget">Бюджет для инициализации сессии.</param>
 		public void Initialize(Budget budget)
@@ -42,7 +42,7 @@ namespace MoneyCounter.Session
 		public Budget Budget { get; private set; }
 
 		/// <summary>
-		/// Получает флаг модификации текущей сессси.
+		/// Получает флаг модификации текущего проекта.
 		/// </summary>
 		[DataMember]
 		public bool IsDerty { get; }
@@ -59,15 +59,15 @@ namespace MoneyCounter.Session
 		public List<string> Tags => Budget.Accounts.SelectMany(opration => opration.Tags).Distinct().ToList();
 
 		/// <summary>
-		/// Получает или задает путь к сессии.
+		/// Получает или задает путь к файлу проекта.
 		/// </summary>
 		public string FilePath { get; set; }
 
 		/// <summary>
-		/// Выполняет дисериализацию сессии из указанного файла.
+		/// Выполняет дисериализацию проекта по указанному пути.
 		/// </summary>
-		/// <param name="filePath">Путь к файлу.</param>
-		/// <returns>Сессия.</returns>
+		/// <param name="filePath">Путь к файлу проекта.</param>
+		/// <returns>Данные из файла проекта.</returns>
 		public static Project Load(string filePath)
 		{			
 			if (!File.Exists(filePath))
@@ -82,18 +82,18 @@ namespace MoneyCounter.Session
 		}
 
 		/// <summary>
-		/// Выполняет сериализацию сессии по указанному пути.
+		/// Выполняет сериализацию проекта по указанному пути.
 		/// </summary>
-		/// <param name="filePath">Путь к файлу.</param>
-		/// <param name="session">Нынешняя сессия.</param>
-		public static void Save(string filePath, Project session)
+		/// <param name="filePath">Путь к файлу проекта.</param>
+		/// <param name="project">Текущий проект.</param>
+		public static void Save(string filePath, Project project)
 		{			
 			JsonSerializer serializer = new JsonSerializer();
 			
 			using (StreamWriter sw = new StreamWriter(filePath))
 			using (JsonWriter writer = new JsonTextWriter(sw))
 			{
-				serializer.Serialize(writer, session);
+				serializer.Serialize(writer, project);
 				writer.Close();
 			}
 		}
