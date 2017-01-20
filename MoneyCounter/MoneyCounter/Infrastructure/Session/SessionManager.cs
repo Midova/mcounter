@@ -7,9 +7,9 @@ namespace MoneyCounter.Infrastructure.Session
 	/// </summary>
 	public class SessionManager : ISessionManager
 	{		
-		public SessionManager(Project project, IConfirmationRequestService confirmationRequestService, IOpenProjectFileService fileOpenDialogService, ISaveProjectFileService fileSaveDialogService)
+		public SessionManager(IConfirmationRequestService confirmationRequestService, IOpenProjectFileService fileOpenDialogService, ISaveProjectFileService fileSaveDialogService)
 		{
-			Project = project;
+			Project = new Project();
 			_ConfirmationRequestService = confirmationRequestService;
 			_FileOpenDialogService = fileOpenDialogService;
 			_FileSaveDialogService = fileSaveDialogService;
