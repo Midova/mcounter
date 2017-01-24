@@ -1,19 +1,29 @@
-﻿using MoneyCounter.Services;
+﻿using MoneyCounter.Infrastructure.ProjectAccess;
+using MoneyCounter.Services;
+using Newtonsoft.Json;
+using System.IO;
+using MoneyCounter.Data.Model;
 
 namespace MoneyCounter.Infrastructure.Session
 {
 	/// <summary>
 	/// Класс управления проектом.
 	/// </summary>
-	public class SessionManager : ISessionManager
+	public class ProjectManager : IProjectManager
 	{		
-		public SessionManager(IConfirmationRequestService confirmationRequestService, IOpenProjectFileService fileOpenDialogService, ISaveProjectFileService fileSaveDialogService)
+		public ProjectManager(IConfirmationRequestService confirmationRequestService, IOpenProjectFileService fileOpenDialogService, ISaveProjectFileService fileSaveDialogService)
 		{
 			Project = new Project();
+			FilePath = string.Empty;
 			_ConfirmationRequestService = confirmationRequestService;
 			_FileOpenDialogService = fileOpenDialogService;
 			_FileSaveDialogService = fileSaveDialogService;
 		}
+
+		/// <summary>
+		/// Разрешение файла, для сохранения данного проекта.
+		/// </summary>
+		public const string FileExtension = ".mcounter";
 
 		/// <summary>
 		/// Сервис работы с окном сообщений.
@@ -39,6 +49,11 @@ namespace MoneyCounter.Infrastructure.Session
 		/// <inheritdoc />
 		public bool CanSaveProject() => Project.IsDerty == true;
 
+		/// <summary>
+		/// Получает или задает путь к файлу проекта.
+		/// </summary>
+		public string FilePath { get; set; }
+		
 		/// <inheritdoc />
 		public void CloseProject()
 		{
@@ -74,8 +89,27 @@ namespace MoneyCounter.Infrastructure.Session
 			if (result != true)
 				return;
 
-			Project = Project.Load(path);
-			Project.FilePath = path;
+			FilePath = path;
+			var content = File.ReadAllText(FilePath);
+
+			Project = JsonConvert.DeserializeObject<Project>(content);
+		}
+
+		/// <summary>
+		/// Выполняет сериализацию проекта по указанному пути.
+		/// </summary>
+		/// <param name="filePath">Путь к файлу проекта.</param>
+		/// <param name="project">Текущий проект.</param>
+		public static void Save(string filePath, Project project)
+		{
+			JsonSerializer serializer = new JsonSerializer();
+
+			using (StreamWriter sw = new StreamWriter(filePath))
+			using (JsonWriter writer = new JsonTextWriter(sw))
+			{
+				serializer.Serialize(writer, project);
+				writer.Close();
+			}
 		}
 
 		/// <inheritdoc />
@@ -87,14 +121,14 @@ namespace MoneyCounter.Infrastructure.Session
 			if (result != true)
 				return;
 
-			Project.Save(path, Project);
+			Save(path, Project);
 		}
 
 		/// <inheritdoc />
 		public void SaveProject()
 		{
-			if (Project.FilePath != string.Empty)
-				Project.Save(Project.FilePath, Project);
+			if (FilePath != string.Empty)
+				Save(FilePath, Project);
 			else
 				SaveAsProject();
 		}

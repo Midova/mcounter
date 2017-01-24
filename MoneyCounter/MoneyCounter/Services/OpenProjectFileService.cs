@@ -14,7 +14,7 @@ namespace MoneyCounter.Services
 			var dialog = new OpenFileDialog()
 			{				
 				Multiselect = false,
-				DefaultExt = Project.FileExtension,
+				DefaultExt = ProjectManager.FileExtension,
 				Filter = "Budget file|*.mcounter"
 			};
 

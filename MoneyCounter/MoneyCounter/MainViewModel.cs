@@ -18,14 +18,14 @@ namespace MoneyCounter
 			_FileSaveDialogService = fileSaveDialogService;
 			_ConfirmationRequestService = confirmationRequestService;			
 
-			SessionManager = new SessionManager(_ConfirmationRequestService, _FileOpenDialogService, _FileSaveDialogService);
+			ProjectManager = new ProjectManager(_ConfirmationRequestService, _FileOpenDialogService, _FileSaveDialogService);
 
-			LoadProjectCommand = new Command(SessionManager.LoadProject);
-			SaveProjectCommand = new Command(SessionManager.SaveProject, SessionManager.CanSaveProject);
-			SaveAsProjectCommand = new Command(SessionManager.SaveAsProject);
+			LoadProjectCommand = new Command(ProjectManager.LoadProject);
+			SaveProjectCommand = new Command(ProjectManager.SaveProject, ProjectManager.CanSaveProject);
+			SaveAsProjectCommand = new Command(ProjectManager.SaveAsProject);
 
-			CloseProjectCommand = new Command(SessionManager.CloseProject, SessionManager.CanCloseProject);
-			CreateNewProjectCommand = new Command(SessionManager.CreateNewProject);
+			CloseProjectCommand = new Command(ProjectManager.CloseProject, ProjectManager.CanCloseProject);
+			CreateNewProjectCommand = new Command(ProjectManager.CreateNewProject);
 					
 			PropertyChanged += MainViewModel_PropertyChanged;		
 		}
@@ -64,7 +64,7 @@ namespace MoneyCounter
 		/// <summary>
 		/// Менеджер сессии.
 		/// </summary>
-		public SessionManager SessionManager { get; }
+		public ProjectManager ProjectManager { get; }
 
 		/// <summary>
 		/// Получает обработчик создания нового проекта.

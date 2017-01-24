@@ -13,7 +13,8 @@ namespace MoneyCounter.Services
 		{
 			var dialog = new SaveFileDialog()
 			{
-				DefaultExt = Project.FileExtension
+				DefaultExt = ProjectManager.FileExtension,
+				Filter = "Budget file|*.mcounter"
 			};
 
 			var result = dialog.ShowDialog();

@@ -1,6 +1,11 @@
-﻿namespace MoneyCounter.Infrastructure.Session
+﻿using MoneyCounter.Data.Model;
+
+namespace MoneyCounter.Infrastructure.ProjectAccess
 {
-	public interface ISessionManager
+	/// <summary>
+	/// Интерыфейс для класса управления проектом.
+	/// </summary>
+	public interface IProjectManager
 	{
 		/// <summary>
 		/// Текущий проект.
@@ -35,13 +40,13 @@
 		/// <summary>
 		/// Загружался ли проект.
 		/// </summary>
-		/// <returns>Правда- если сессия заполнена, ложь- иначе.</returns>
+		/// <returns><c>true</c>- если сессия заполнена, <c>false</c>- иначе.</returns>
 		bool CanCloseProject();
 
 		/// <summary>
 		/// Изменялся ли проект.
 		/// </summary>
-		/// <returns>Правда- сессия менялась, ложь - иначе.</returns>
+		/// <returns><c>true</c>- сессия менялась, <c>false</c> - иначе.</returns>
 		bool CanSaveProject();
 	}
 }

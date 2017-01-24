@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace MoneyCounter.Infrastructure.Session
+namespace MoneyCounter.Infrastructure.ProjectAccess
 {
 	/// <summary>
 	/// Интерфейс для классов содержащих оперативные данные пользователя.
