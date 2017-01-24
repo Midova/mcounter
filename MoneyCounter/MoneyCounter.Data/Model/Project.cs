@@ -9,7 +9,7 @@ namespace MoneyCounter.Data.Model
 	/// Класс, содержащий оперативные данные пользователя.
 	/// </summary>	
 	[DataContract]
-	public class Project //: IProject
+	public class Project : IProject
 	{		
 		public Project()
 		{

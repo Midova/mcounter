@@ -1,8 +1,7 @@
-﻿using MoneyCounter.Data.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace MoneyCounter.Infrastructure.ProjectAccess
+namespace MoneyCounter.Data.Model
 {
 	/// <summary>
 	/// Интерфейс для классов содержащих оперативные данные пользователя.
