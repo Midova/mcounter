@@ -3,6 +3,7 @@ using MoneyCounter.Services;
 using System.Windows.Input;
 using Catel.Data;
 using MoneyCounter.Infrastructure.Session;
+using MoneyCounter.Data.Model;
 
 namespace MoneyCounter
 {
@@ -18,14 +19,14 @@ namespace MoneyCounter
 			_FileSaveDialogService = fileSaveDialogService;
 			_ConfirmationRequestService = confirmationRequestService;			
 
-			ProjectManager = new ProjectManager(_ConfirmationRequestService, _FileOpenDialogService, _FileSaveDialogService);
+			_ProjectManager = new ProjectManager(_ConfirmationRequestService, _FileOpenDialogService, _FileSaveDialogService);
 
-			LoadProjectCommand = new Command(ProjectManager.LoadProject);
-			SaveProjectCommand = new Command(ProjectManager.SaveProject, ProjectManager.CanSaveProject);
-			SaveAsProjectCommand = new Command(ProjectManager.SaveAsProject);
+			OpenProjectCommand = new Command(_ProjectManager.LoadProject);
+			SaveProjectCommand = new Command(_ProjectManager.SaveProject, _ProjectManager.CanSaveProject);
+			SaveAsProjectCommand = new Command(_ProjectManager.SaveAsProject);
 
-			CloseProjectCommand = new Command(ProjectManager.CloseProject, ProjectManager.CanCloseProject);
-			CreateNewProjectCommand = new Command(ProjectManager.CreateNewProject);
+			CloseProjectCommand = new Command(_ProjectManager.CloseProject, _ProjectManager.CanCloseProject);
+			CreateNewProjectCommand = new Command(_ProjectManager.CreateNewProject);
 					
 			PropertyChanged += MainViewModel_PropertyChanged;		
 		}
@@ -61,34 +62,43 @@ namespace MoneyCounter
 
 		#endregion
 
+		#region Project Management
+
 		/// <summary>
 		/// Менеджер сессии.
 		/// </summary>
-		public ProjectManager ProjectManager { get; }
+		private ProjectManager _ProjectManager;
 
 		/// <summary>
-		/// Получает обработчик создания нового проекта.
+		/// Текущая загруженная сессия.
+		/// </summary>
+		public Project Project => _ProjectManager.Project;
+
+		/// <summary>
+		/// Получает команду создания нового проекта.
 		/// </summary>
 		public ICommand CreateNewProjectCommand { get; private set; }
 
 		/// <summary>
-		/// Получает обработчик загрузки проекта из файла.
+		/// Получает команду загрузки проекта из файла.
 		/// </summary>
-		public ICommand LoadProjectCommand { get; private set; }
+		public ICommand OpenProjectCommand { get; private set; }
 
 		/// <summary>
-		/// Получает обработчик сохранения проекта в файл.
+		/// Получает команду сохранения проекта в файл.
 		/// </summary>
 		public ICommand SaveProjectCommand { get; private set; }
 
 		/// <summary>
-		/// Получает обработчик сохранения проекта в файл по новому адресу.
+		/// Получает команду сохранения проекта в файл по новому адресу.
 		/// </summary>
 		public ICommand SaveAsProjectCommand { get; private set; }
 
 		/// <summary>
-		/// Получает обработчик закрытия проекта.
+		/// Получает команду закрытия проекта.
 		/// </summary>
 		public ICommand CloseProjectCommand { get; private set; }
+
+		#endregion
 	}
 }

@@ -94,7 +94,7 @@
     <Compile Include="Services\ISaveProjectFileService.cs" />
     <Compile Include="Services\OpenProjectFileService.cs" />
     <Compile Include="Services\SaveProjectFileService.cs" />
-    <Compile Include="Infrastructure\Session\ProjectManager.cs" />
+    <Compile Include="LoagAccess\ProjectManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
