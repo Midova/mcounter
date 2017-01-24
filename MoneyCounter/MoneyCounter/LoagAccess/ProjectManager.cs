@@ -20,10 +20,7 @@ namespace MoneyCounter.Infrastructure.Session
 			_FileSaveDialogService = fileSaveDialogService;
 		}
 
-		/// <summary>
-		/// Разрешение файла, для сохранения данного проекта.
-		/// </summary>
-		public const string FileExtension = ".mcounter";
+		#region Infrastructure
 
 		/// <summary>
 		/// Сервис работы с окном сообщений.
@@ -40,14 +37,16 @@ namespace MoneyCounter.Infrastructure.Session
 		/// </summary>
 		private ISaveProjectFileService _FileSaveDialogService;
 
+		#endregion
+
+		/// <summary>
+		/// Разрешение файла, для сохранения данного проекта.
+		/// </summary>
+		public const string FileExtension = ".mcounter";
+
+
 		/// <inheritdoc />
 		public Project Project { get; private set; }
-
-		/// <inheritdoc />
-		public bool CanCloseProject() => Project != null;
-
-		/// <inheritdoc />
-		public bool CanSaveProject() => Project.IsDerty == true;
 
 		/// <summary>
 		/// Получает или задает путь к файлу проекта.
@@ -68,6 +67,10 @@ namespace MoneyCounter.Infrastructure.Session
 
 			SaveProject();
 		}
+
+		/// <inheritdoc />
+		public bool CanCloseProject() => Project != null;
+
 
 		/// <inheritdoc />
 		public void CreateNewProject()
@@ -95,12 +98,14 @@ namespace MoneyCounter.Infrastructure.Session
 			Project = JsonConvert.DeserializeObject<Project>(content);
 		}
 
+		#region SaveProject
+
 		/// <summary>
 		/// Выполняет сериализацию проекта по указанному пути.
 		/// </summary>
 		/// <param name="filePath">Путь к файлу проекта.</param>
 		/// <param name="project">Текущий проект.</param>
-		public static void Save(string filePath, Project project)
+		private void SaveProjectInternally(string filePath, Project project)
 		{
 			JsonSerializer serializer = new JsonSerializer();
 
@@ -111,6 +116,9 @@ namespace MoneyCounter.Infrastructure.Session
 				writer.Close();
 			}
 		}
+		
+		/// <inheritdoc />
+		public bool CanSaveProject() => Project.IsDerty == true;
 
 		/// <inheritdoc />
 		public void SaveAsProject()
@@ -121,16 +129,19 @@ namespace MoneyCounter.Infrastructure.Session
 			if (result != true)
 				return;
 
-			Save(path, Project);
+			SaveProjectInternally(path, Project);
 		}
 
 		/// <inheritdoc />
 		public void SaveProject()
 		{
 			if (FilePath != string.Empty)
-				Save(FilePath, Project);
+				SaveProjectInternally(FilePath, Project);
 			else
 				SaveAsProject();
 		}
+
+		#endregion
+
 	}
 }
