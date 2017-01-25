@@ -1,13 +1,12 @@
-﻿using MoneyCounter.Data.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace MoneyCounter
+namespace MoneyCounter.Data.Model
 {
 	/// <summary>
 	/// Интерфейс для классов содержащих оперативные данные пользователя.
 	/// </summary>
-	public interface ISession
+	public interface IProject
 	{		
 		/// <summary>
 		/// Получает бюджет.

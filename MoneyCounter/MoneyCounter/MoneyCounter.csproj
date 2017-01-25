@@ -94,10 +94,9 @@
     <Compile Include="Services\ISaveProjectFileService.cs" />
     <Compile Include="Services\OpenProjectFileService.cs" />
     <Compile Include="Services\SaveProjectFileService.cs" />
-    <Compile Include="Session.cs" />
+    <Compile Include="LoagAccess\ProjectManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ISession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -132,6 +131,10 @@
       <Project>{AAD56E40-7CE7-4CF9-8BDC-FC10A5EB14AC}</Project>
       <Name>MoneyCounter.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MoneyCounter.Infrastructure\MoneyCounter.Infrastructure.csproj">
+      <Project>{84695a5e-1fe5-4a3b-987b-e8fd5113b392}</Project>
+      <Name>MoneyCounter.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindow.xaml">
@@ -141,7 +144,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Operations\" />
-    <Folder Include="Session\" />
     <Folder Include="Templates\" />
   </ItemGroup>
   <ItemGroup>

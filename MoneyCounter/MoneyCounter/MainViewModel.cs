@@ -1,9 +1,9 @@
 ﻿using Catel.MVVM;
 using MoneyCounter.Services;
-using System.IO;
 using System.Windows.Input;
-using System;
 using Catel.Data;
+using MoneyCounter.Infrastructure.Session;
+using MoneyCounter.Data.Model;
 
 namespace MoneyCounter
 {
@@ -15,17 +15,14 @@ namespace MoneyCounter
 		public MainViewModel(IOpenProjectFileService fileOpenDialogService,
 			ISaveProjectFileService fileSaveDialogService, IConfirmationRequestService confirmationRequestService)
 		{
-			_FileOpenDialogService = fileOpenDialogService;
-			_FileSaveDialogService = fileSaveDialogService;
-			_ConfirmationRequestService = confirmationRequestService;
-			Session = new Session();
+			_ProjectManager = new ProjectManager(confirmationRequestService, fileOpenDialogService, fileSaveDialogService);
 
-			LoadSessionCommand = new Command(LoadSession);
-			SaveSessionCommand = new Command(SaveSession, CanSaveSession);
-			SaveAsSessionCommand = new Command(SaveAsSession, CanSaveSession);
+			OpenProjectCommand = new Command(_ProjectManager.LoadProject);
+			SaveProjectCommand = new Command(_ProjectManager.SaveProject, _ProjectManager.CanSaveProject);
+			SaveAsProjectCommand = new Command(_ProjectManager.SaveAsProject);
 
-			CloseSessionCommand = new Command(CloseSession, CanCloseSession);
-			CreateNewSessionCommand = new Command(CreateNewSession);
+			CloseProjectCommand = new Command(_ProjectManager.CloseProject, _ProjectManager.CanCloseProject);
+			CreateNewProjectCommand = new Command(_ProjectManager.CreateNewProject);
 					
 			PropertyChanged += MainViewModel_PropertyChanged;		
 		}
@@ -37,140 +34,48 @@ namespace MoneyCounter
 		/// <param name="e">Данные для события.</param>
 		private void MainViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
-			((Command)CloseSessionCommand).RaiseCanExecuteChanged();
-			((Command)SaveAsSessionCommand).RaiseCanExecuteChanged();
-			((Command)SaveSessionCommand).RaiseCanExecuteChanged();
+			((Command)CloseProjectCommand).RaiseCanExecuteChanged();
+			((Command)SaveAsProjectCommand).RaiseCanExecuteChanged();
+			((Command)SaveProjectCommand).RaiseCanExecuteChanged();
 		}
-
-		#region Infrastructure
-
-		/// <summary>
-		/// Сервис загрузки данных из файла.
-		/// </summary>
-		private IOpenProjectFileService _FileOpenDialogService;
+		
+		#region Project Management
 
 		/// <summary>
-		/// Сервис сохранения данных в файл.
+		/// Менеджер проекта.
 		/// </summary>
-		private ISaveProjectFileService _FileSaveDialogService;
+		private ProjectManager _ProjectManager;
 
 		/// <summary>
-		/// Сервис работы с окном сообщений.
+		/// Текущаий проект.
 		/// </summary>
-		private IConfirmationRequestService _ConfirmationRequestService;
+		public Project Project => _ProjectManager.Project;
+
+		/// <summary>
+		/// Получает команду создания нового проекта.
+		/// </summary>
+		public ICommand CreateNewProjectCommand { get; private set; }
+
+		/// <summary>
+		/// Получает команду загрузки проекта из файла.
+		/// </summary>
+		public ICommand OpenProjectCommand { get; private set; }
+
+		/// <summary>
+		/// Получает команду сохранения проекта в файл.
+		/// </summary>
+		public ICommand SaveProjectCommand { get; private set; }
+
+		/// <summary>
+		/// Получает команду сохранения проекта в файл по новому адресу.
+		/// </summary>
+		public ICommand SaveAsProjectCommand { get; private set; }
+
+		/// <summary>
+		/// Получает команду закрытия проекта.
+		/// </summary>
+		public ICommand CloseProjectCommand { get; private set; }
+
 		#endregion
-
-		/// <summary>
-		/// Текущая загруженная сессия.
-		/// </summary>
-		public Session Session { get; private set; }
-
-		/// <summary>
-		/// Получает обработчик создания новой сессии.
-		/// </summary>
-		public ICommand CreateNewSessionCommand { get; private set; }
-
-		/// <summary>
-		/// Cозданиe новой сессии.
-		/// </summary>
-		private void CreateNewSession()
-		{
-			if (Session != null)
-				CloseSession();
-			
-			var newSession = new Session();
-		}  
-
-		/// <summary>
-		/// Получает обработчик загрузки проекта из файла.
-		/// </summary>
-		public ICommand LoadSessionCommand { get; private set; }
-
-		/// <summary>
-		/// Загрузка проекта из файла.
-		/// </summary>
-		private void LoadSession()
-		{
-			CloseSession();
-
-			string path;
-			var result = _FileOpenDialogService.OpenProjectFile(out path);
-
-			if (result != true)
-				return;
-
-			Session = Session.Load(path);
-			Session.FilePath = path;
-		}
-
-		/// <summary>
-		/// Получает обработчик сохранения проекта в файл.
-		/// </summary>
-		public ICommand SaveSessionCommand { get; private set; }
-
-		/// <summary>
-		/// Сохранение проекта в файл.
-		/// </summary>
-		private void SaveSession()
-		{
-			if (Session.FilePath != string.Empty)
-				Session.Save(Session.FilePath, Session);
-			else
-				SaveAsSession();
-		}
-
-		/// <summary>
-		/// Получает обработчик сохранения проекта в файл по новому адресу.
-		/// </summary>
-		public ICommand SaveAsSessionCommand { get; private set; }
-
-		/// <summary>
-		/// Cохранение проекта в файл по новому адресу.
-		/// </summary>
-		private void SaveAsSession()
-		{
-			string path;
-			var result = _FileSaveDialogService.SaveProjectFile(out path);
-
-			if (result != true)
-				return;
-
-			Session.Save(path, Session);
-		}
-
-		/// <summary>
-		/// Получает обработчик закрытия сессии.
-		/// </summary>
-		public ICommand CloseSessionCommand { get; private set; }
-
-		/// <summary>
-		/// Закрытие сессии, с сохранением или без.
-		/// </summary>
-		private void CloseSession()
-		{
-			if (!Session.IsDerty)
-				return;
-
-			var result = _ConfirmationRequestService
-				.RequestConfirmation("Сессия не сохранена. Сохранить?", "Внимание", System.Windows.MessageBoxButton.OKCancel, System.Windows.MessageBoxImage.Warning);
-			
-			if (result != System.Windows.MessageBoxResult.OK)
-				return;
-
-			SaveSession();						
-		}
-
-		/// <summary>
-		/// Загружалась ли сессия.
-		/// </summary>
-		/// <returns>Правда- если сессия заполнена, ложь- иначе.</returns>
-		private bool CanCloseSession() => Session != null;
-
-		/// <summary>
-		/// Изменялась ли сессия.
-		/// </summary>
-		/// <returns>Правда- сессия менялась, ложь - иначе.</returns>
-		private bool CanSaveSession() => Session.IsDerty == true;
-			
 	}
 }
