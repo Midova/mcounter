@@ -71,7 +71,6 @@ namespace MoneyCounter.Infrastructure.Session
 		/// <inheritdoc />
 		public bool CanCloseProject() => Project != null;
 
-
 		/// <inheritdoc />
 		public void CreateNewProject()
 		{
