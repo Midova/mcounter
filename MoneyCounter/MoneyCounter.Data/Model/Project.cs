@@ -13,18 +13,10 @@ namespace MoneyCounter.Data.Model
 	{		
 		public Project()
 		{
-			OperationTemplates = new ObservableCollection<OperationTemplate>();			
+			OperationTemplates = new ObservableCollection<OperationTemplate>();
 			IsDerty = false;
-		}
-		
-		/// <summary>
-		/// Инициализирует проект.
-		/// </summary>
-		/// <param name="budget">Бюджет для инициализации сессии.</param>
-		public void Initialize(Budget budget)
-		{
-			Budget = budget;
-		}
+			Budget = new Budget();
+		}		
 
 		/// <summary>
 		/// Получает бюджет.
@@ -35,7 +27,6 @@ namespace MoneyCounter.Data.Model
 		/// <summary>
 		/// Получает флаг модификации текущего проекта.
 		/// </summary>
-		[DataMember]
 		public bool IsDerty { get; }
 
 		/// <summary>

@@ -15,11 +15,7 @@ namespace MoneyCounter
 		public MainViewModel(IOpenProjectFileService fileOpenDialogService,
 			ISaveProjectFileService fileSaveDialogService, IConfirmationRequestService confirmationRequestService)
 		{
-			_FileOpenDialogService = fileOpenDialogService;
-			_FileSaveDialogService = fileSaveDialogService;
-			_ConfirmationRequestService = confirmationRequestService;			
-
-			_ProjectManager = new ProjectManager(_ConfirmationRequestService, _FileOpenDialogService, _FileSaveDialogService);
+			_ProjectManager = new ProjectManager(confirmationRequestService, fileOpenDialogService, fileSaveDialogService);
 
 			OpenProjectCommand = new Command(_ProjectManager.LoadProject);
 			SaveProjectCommand = new Command(_ProjectManager.SaveProject, _ProjectManager.CanSaveProject);
@@ -42,35 +38,16 @@ namespace MoneyCounter
 			((Command)SaveAsProjectCommand).RaiseCanExecuteChanged();
 			((Command)SaveProjectCommand).RaiseCanExecuteChanged();
 		}
-
-		#region Infrastructure
-
-		/// <summary>
-		/// Сервис выбора пути к файлу проекта.
-		/// </summary>
-		private IOpenProjectFileService _FileOpenDialogService;
-
-		/// <summary>
-		/// Сервис для выбора файла сохранения проекта.
-		/// </summary>
-		private ISaveProjectFileService _FileSaveDialogService;
-
-		/// <summary>
-		/// Сервис работы с окном сообщений.
-		/// </summary>
-		private IConfirmationRequestService _ConfirmationRequestService;
-
-		#endregion
-
+		
 		#region Project Management
 
 		/// <summary>
-		/// Менеджер сессии.
+		/// Менеджер проекта.
 		/// </summary>
 		private ProjectManager _ProjectManager;
 
 		/// <summary>
-		/// Текущая загруженная сессия.
+		/// Текущаий проект.
 		/// </summary>
 		public Project Project => _ProjectManager.Project;
 

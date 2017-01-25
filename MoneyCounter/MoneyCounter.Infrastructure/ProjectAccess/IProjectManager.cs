@@ -33,6 +33,12 @@ namespace MoneyCounter.Infrastructure.ProjectAccess
 		void SaveAsProject();
 
 		/// <summary>
+		/// Изменялся ли проект.
+		/// </summary>
+		/// <returns><c>true</c>- сессия менялась, <c>false</c> - иначе.</returns>
+		bool CanSaveProject();
+
+		/// <summary>
 		/// Закрытие проекта, с сохранением или без.
 		/// </summary>
 		void CloseProject();
@@ -42,11 +48,5 @@ namespace MoneyCounter.Infrastructure.ProjectAccess
 		/// </summary>
 		/// <returns><c>true</c>- если сессия заполнена, <c>false</c>- иначе.</returns>
 		bool CanCloseProject();
-
-		/// <summary>
-		/// Изменялся ли проект.
-		/// </summary>
-		/// <returns><c>true</c>- сессия менялась, <c>false</c> - иначе.</returns>
-		bool CanSaveProject();
 	}
 }
