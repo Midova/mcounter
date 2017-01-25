@@ -72,7 +72,7 @@ namespace MoneyCounter
 		/// <summary>
 		/// Текущая загруженная сессия.
 		/// </summary>
-		public IProject Project => _ProjectManager.Project;
+		public Project Project => _ProjectManager.Project;
 
 		/// <summary>
 		/// Получает команду создания нового проекта.

@@ -10,7 +10,7 @@ namespace MoneyCounter.Infrastructure.ProjectAccess
 		/// <summary>
 		/// Текущий проект.
 		/// </summary>
-		IProject Project { get; }
+		Project Project { get; }
 
 		/// <summary>
 		/// Cозданиe новой сессии.

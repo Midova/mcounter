@@ -46,7 +46,7 @@ namespace MoneyCounter.Infrastructure.Session
 
 
 		/// <inheritdoc />
-		public IProject Project { get; private set; }
+		public Project Project { get; private set; }
 
 		/// <summary>
 		/// Получает или задает путь к файлу проекта.
@@ -105,7 +105,7 @@ namespace MoneyCounter.Infrastructure.Session
 		/// </summary>
 		/// <param name="filePath">Путь к файлу проекта.</param>
 		/// <param name="project">Текущий проект.</param>
-		private void SaveProjectInternally(string filePath, IProject project)
+		private void SaveProjectInternally(string filePath, Project project)
 		{
 			JsonSerializer serializer = new JsonSerializer();
 

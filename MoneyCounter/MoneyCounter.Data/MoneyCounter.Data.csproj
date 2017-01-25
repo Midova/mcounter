@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="Model\Budget.cs" />
     <Compile Include="Model\CashAccount.cs" />
-    <Compile Include="Model\IProject.cs" />
     <Compile Include="Model\MoneyOperation.cs" />
     <Compile Include="Model\NonCashAccount.cs" />
     <Compile Include="Model\OperationDirection.cs" />
