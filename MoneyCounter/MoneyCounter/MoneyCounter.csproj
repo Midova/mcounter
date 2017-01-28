@@ -147,25 +147,18 @@
     <Folder Include="Templates\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\cross.png" />
+    <Resource Include="Resources\Images\OpenProject.png" />
+    <Resource Include="Resources\Images\CloseProject.png" />
+    <Resource Include="Resources\Images\Exit.png" />
+    <Resource Include="Resources\Images\CreateNewProject.png" />
+    <Resource Include="Resources\Images\SaveAsProject.png" />
+    <Resource Include="Resources\Images\SaveProject.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\save_as.png" />
+    <Resource Include="Resources\Images\Help.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\save_close.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\new.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\nameboard_open.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\file_start_workflow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\help.png" />
+    <Resource Include="Resources\Images\File.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
