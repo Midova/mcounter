@@ -11,10 +11,12 @@ namespace MoneyCounter
 	/// Класс, работы с главным окном.
 	/// </summary>
 	public class MainViewModel : ObservableObject
-	{		
+	{
 		public MainViewModel(IOpenProjectFileService fileOpenDialogService,
 			ISaveProjectFileService fileSaveDialogService, IConfirmationRequestService confirmationRequestService)
 		{
+			_ConfirmationRequestService = confirmationRequestService;
+
 			_ProjectManager = new ProjectManager(confirmationRequestService, fileOpenDialogService, fileSaveDialogService);
 
 			OpenProjectCommand = new Command(_ProjectManager.LoadProject);
@@ -23,8 +25,10 @@ namespace MoneyCounter
 
 			CloseProjectCommand = new Command(_ProjectManager.CloseProject, _ProjectManager.CanCloseProject);
 			CreateNewProjectCommand = new Command(_ProjectManager.CreateNewProject);
-					
-			PropertyChanged += MainViewModel_PropertyChanged;		
+
+			PropertyChanged += MainViewModel_PropertyChanged;
+
+			ShowInformationCommand = new Command(ShowInformation);
 		}
 
 		/// <summary>
@@ -38,13 +42,15 @@ namespace MoneyCounter
 			((Command)SaveAsProjectCommand).RaiseCanExecuteChanged();
 			((Command)SaveProjectCommand).RaiseCanExecuteChanged();
 		}
-		
+
+		private IConfirmationRequestService _ConfirmationRequestService;
+
 		#region Project Management
 
 		/// <summary>
 		/// Менеджер проекта.
 		/// </summary>
-		private ProjectManager _ProjectManager;
+		private ProjectManager _ProjectManager;		
 
 		/// <summary>
 		/// Текущаий проект.
@@ -77,5 +83,15 @@ namespace MoneyCounter
 		public ICommand CloseProjectCommand { get; private set; }
 
 		#endregion
+
+		public ICommand ShowInformationCommand { get; private set; }
+
+		private void ShowInformation()
+		{
+			var result = _ConfirmationRequestService.RequestConfirmation("Иконки из магазина icons8.com", "О программе", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Asterisk);
+
+			if (result == System.Windows.MessageBoxResult.OK)
+				return;
+		}
 	}
 }
