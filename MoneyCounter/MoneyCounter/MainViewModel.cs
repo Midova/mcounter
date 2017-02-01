@@ -92,6 +92,7 @@ namespace MoneyCounter
 
 			if (result == System.Windows.MessageBoxResult.OK)
 				return;
+
 		}
 	}
 }

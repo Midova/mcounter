@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoneyCounter"
         mc:Ignorable="d"
-        Title="AboutWindow" Height="150" Width="350">
+        Title="О программе" Height="150" Width="350">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -13,11 +13,11 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Margin="5">            
-            <Hyperlink NavigateUri="https://ru.icons8.com/web-app">Иконки в оригинале</Hyperlink>
+            <Hyperlink NavigateUri="https://ru.icons8.com/web-app" Click="Hyperlink_Click" >Иконки в оригинале</Hyperlink>
         </TextBlock>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Width="auto" Margin="5">
-            <Button Width="55" Margin="4,0">Ok</Button>
+            <Button IsCancel="True" Width="55" Margin="4,0">Ok</Button>
         </StackPanel>
     </Grid>
 </Window>

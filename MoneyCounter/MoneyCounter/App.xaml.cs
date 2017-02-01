@@ -24,6 +24,10 @@ namespace MoneyCounter
 						
 			MainWindow = mainWindow;
 			MainWindow.Show();
+
+			//Написано для проверки перехода по гиперсылке из окна информации о программе.
+			var aboutWindow = new AboutWindow();
+			aboutWindow.Show();
 		}
 	}
 }
