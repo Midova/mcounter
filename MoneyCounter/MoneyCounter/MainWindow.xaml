@@ -15,44 +15,44 @@
         <Menu Grid.Row="0">
             <MenuItem Header="Файл">
                 <MenuItem.Icon>
-                    <Image Source="Resources/Images/File.png"/>
+                    <Image Source="Resources/Images/Menu.png"/>
                     </MenuItem.Icon>
                 <MenuItem Header="Новый проект" Command="{Binding CreateNewProjectCommand}">
                     <MenuItem.Icon>
-                        <Image Source="Resources/Images/CreateNewProject.png"/>
+                        <Image Source="Resources/Images/Create_New.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="Открыть проект" Command="{Binding OpenProjectCommand}">
                     <MenuItem.Icon>
-                        <Image Source="Resources/Images/OpenProject.png"/>
+                        <Image Source="Resources/Images/Upload.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
                 <MenuItem Header="Сохранить" Command="{Binding SaveProjectCommand}">
                     <MenuItem.Icon>
-                        <Image Source="Resources/Images/SaveProject.png"/>
+                        <Image Source="Resources/Images/Save_2.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="Сохранить как..." Command="{Binding SaveAsProjectCommand}">
                     <MenuItem.Icon>
-                        <Image Source="Resources/Images/SaveAsProject.png"/>
+                        <Image Source="Resources/Images/Save_as.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
                 <MenuItem Header="Закрыть проект" Command="{Binding  CloseProjectCommand}"> 
                     <MenuItem.Icon>
-                        <Image Source="Resources/Images/CloseProject.png"/>
+                        <Image Source="Resources/Images/Save_Close.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="Выход">
                     <MenuItem.Icon>
-                        <Image Source="Resources/Images/Exit.png"/>
+                        <Image Source="Resources/Images/Close.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="О программе" Command="{Binding ShowAboutWindowCommand}">
                 <MenuItem.Icon>
-                    <Image Source="Resources/Images/help.png"/>
+                    <Image Source="Resources/Images/Info.png"/>
                 </MenuItem.Icon>
             </MenuItem>
 

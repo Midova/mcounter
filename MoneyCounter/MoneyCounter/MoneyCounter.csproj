@@ -157,18 +157,31 @@
     <Folder Include="Templates\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\OpenProject.png" />
-    <Resource Include="Resources\Images\CloseProject.png" />
-    <Resource Include="Resources\Images\Exit.png" />
-    <Resource Include="Resources\Images\CreateNewProject.png" />
-    <Resource Include="Resources\Images\SaveAsProject.png" />
-    <Resource Include="Resources\Images\SaveProject.png" />
+    <Resource Include="Resources\Images\Menu.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Help.png" />
+    <Resource Include="Resources\Images\Save_as.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\File.png" />
+    <Resource Include="Resources\Images\Create_New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Save_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Save_Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Close.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
