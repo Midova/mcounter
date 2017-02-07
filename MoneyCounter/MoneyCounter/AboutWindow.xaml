@@ -11,9 +11,9 @@
             <RowDefinition/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-
+        
         <TextBlock Grid.Row="0" Margin="5">            
-            <Hyperlink NavigateUri="https://ru.icons8.com/web-app" Click="Hyperlink_Click" >Иконки в оригинале</Hyperlink>
+            <Hyperlink Command="{Binding GoToIconsSiteCommand}">Иконки в оригинале</Hyperlink> 
         </TextBlock>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Width="auto" Margin="5">

@@ -83,6 +83,7 @@
     <Compile Include="AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AboutWindowModel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -92,7 +93,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\ConfirmationRequestService.cs" />
+    <Compile Include="Services\DialogWindowService.cs" />
     <Compile Include="Services\IConfirmationRequestService.cs" />
+    <Compile Include="Services\IDialogWindowService.cs" />
     <Compile Include="Services\IOpenProjectFileService.cs" />
     <Compile Include="Services\ISaveProjectFileService.cs" />
     <Compile Include="Services\OpenProjectFileService.cs" />

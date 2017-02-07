@@ -23,10 +23,5 @@ namespace MoneyCounter
 		{
 			InitializeComponent();
 		}
-
-		private void Hyperlink_Click(object sender, RoutedEventArgs e)
-		{
-			System.Diagnostics.Process.Start("https://ru.icons8.com/web-app");
-		}
 	}
 }

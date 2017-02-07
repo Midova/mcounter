@@ -50,7 +50,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="О программе" Command="{Binding ShowInformationCommand}">
+            <MenuItem Header="О программе" Command="{Binding ShowAboutWindowCommand}">
                 <MenuItem.Icon>
                     <Image Source="Resources/Images/help.png"/>
                 </MenuItem.Icon>

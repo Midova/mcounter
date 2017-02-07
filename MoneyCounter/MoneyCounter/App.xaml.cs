@@ -17,17 +17,16 @@ namespace MoneyCounter
 			var openFileService = new OpenProjectFileService();
 			var saveFileService = new SaveProjectFileService();
 			var confirmationRequestService = new ConfirmationRequestService();
+			var dialogWindowService = new DialogWindowService();
 
-			var context = new MainViewModel(openFileService, saveFileService, confirmationRequestService);
+			dialogWindowService.Add(typeof(AboutWindowModel), typeof(AboutWindow));
+
+			var context = new MainViewModel(openFileService, saveFileService, confirmationRequestService, dialogWindowService);
 
 			mainWindow.DataContext = context;
 						
 			MainWindow = mainWindow;
 			MainWindow.Show();
-
-			//Написано для проверки перехода по гиперсылке из окна информации о программе.
-			var aboutWindow = new AboutWindow();
-			aboutWindow.Show();
 		}
 	}
 }

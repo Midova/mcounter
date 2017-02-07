@@ -13,9 +13,9 @@ namespace MoneyCounter
 	public class MainViewModel : ObservableObject
 	{
 		public MainViewModel(IOpenProjectFileService fileOpenDialogService,
-			ISaveProjectFileService fileSaveDialogService, IConfirmationRequestService confirmationRequestService)
+			ISaveProjectFileService fileSaveDialogService, IConfirmationRequestService confirmationRequestService, IDialogWindowService dialogWindowService)
 		{
-			_ConfirmationRequestService = confirmationRequestService;
+			_DialogWindowService = dialogWindowService;
 
 			_ProjectManager = new ProjectManager(confirmationRequestService, fileOpenDialogService, fileSaveDialogService);
 
@@ -28,7 +28,7 @@ namespace MoneyCounter
 
 			PropertyChanged += MainViewModel_PropertyChanged;
 
-			ShowInformationCommand = new Command(ShowInformation);
+			ShowAboutWindowCommand = new Command(ShowAboutWindow);
 		}
 
 		/// <summary>
@@ -42,8 +42,14 @@ namespace MoneyCounter
 			((Command)SaveAsProjectCommand).RaiseCanExecuteChanged();
 			((Command)SaveProjectCommand).RaiseCanExecuteChanged();
 		}
+		#region Infrastructura
 
-		private IConfirmationRequestService _ConfirmationRequestService;
+		/// <summary>
+		/// 
+		/// </summary>
+		private IDialogWindowService _DialogWindowService;
+
+		#endregion
 
 		#region Project Management
 
@@ -84,15 +90,19 @@ namespace MoneyCounter
 
 		#endregion
 
-		public ICommand ShowInformationCommand { get; private set; }
+		/// <summary>
+		/// Получает команду показа окна информации о программе.
+		/// </summary>
+		public ICommand ShowAboutWindowCommand { get; private set; }
 
-		private void ShowInformation()
+		/// <summary>
+		/// Показывает окно информации о программе.
+		/// </summary>
+		private void ShowAboutWindow()
 		{
-			var result = _ConfirmationRequestService.RequestConfirmation("Иконки из магазина icons8.com", "О программе", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Asterisk);
+			var windowModel = new AboutWindowModel();
 
-			if (result == System.Windows.MessageBoxResult.OK)
-				return;
-
+			_DialogWindowService.ShowDialog(windowModel);
 		}
 	}
 }
