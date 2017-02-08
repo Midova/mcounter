@@ -45,7 +45,7 @@ namespace MoneyCounter
 		#region Infrastructura
 
 		/// <summary>
-		/// 
+		/// Сервис работы с диалоговым окном.
 		/// </summary>
 		private IDialogWindowService _DialogWindowService;
 
@@ -59,7 +59,7 @@ namespace MoneyCounter
 		private ProjectManager _ProjectManager;		
 
 		/// <summary>
-		/// Текущаий проект.
+		/// Текущий проект.
 		/// </summary>
 		public Project Project => _ProjectManager.Project;
 
@@ -100,9 +100,7 @@ namespace MoneyCounter
 		/// </summary>
 		private void ShowAboutWindow()
 		{
-			var windowModel = new AboutWindowModel();
-
-			_DialogWindowService.ShowDialog(windowModel);
+			_DialogWindowService.ShowDialog(new AboutWindowModel());
 		}
 	}
 }

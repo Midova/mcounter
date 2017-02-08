@@ -5,7 +5,7 @@ using System.Windows;
 namespace MoneyCounter.Services
 {
 	/// <summary>
-	/// Класс работы с диалоговым окном.
+	/// Класс сервиса работы с диалоговыми окнами.
 	/// </summary>
 	public class DialogWindowService : IDialogWindowService
 	{

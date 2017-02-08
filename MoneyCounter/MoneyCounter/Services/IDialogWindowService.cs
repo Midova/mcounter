@@ -8,16 +8,16 @@ namespace MoneyCounter.Services
 	public interface IDialogWindowService
 	{
 		/// <summary>
-		/// Добавление связи в словарь
+		/// Добавление связи в словарь.
 		/// </summary>
-		/// <param name="viewModel">Модель представления данных</param>
-		/// <param name="window">Окно</param>
+		/// <param name="viewModel">Модель представления данных.</param>
+		/// <param name="window">Окно.</param>
 		void Add(Type viewModel, Type window);
 
 		/// <summary>
-		/// Метод который заставляет окно показываться
+		/// Показывает окно дилога с указанным контектом.
 		/// </summary>
-		/// <param name="viewModelValue">Выбраная модель представление данных.</param>
+		/// <param name="viewModelValue">Модель представления ипспользуемая в качестве контекста данных для диалогового окна.</param>
 		void ShowDialog(object viewModelValue);
 	}
 }

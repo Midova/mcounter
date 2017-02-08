@@ -10,18 +10,18 @@ namespace MoneyCounter
 	{
 		public AboutWindowModel()
 		{
-			GoToIconsSiteCommand = new Command(GoToIconsSite);
+			OpenIconsSourceSiteCommand = new Command(OpenIconsSourceSite);
 		}
 
 		/// <summary>
-		/// Получает обработчик открытия сайта с иконками.
+		/// Получает команду открытия сайта с иконками.
 		/// </summary>
-		public ICommand GoToIconsSiteCommand { get; private set; }
+		public ICommand OpenIconsSourceSiteCommand { get; private set; }
 
 		/// <summary>
 		/// Переход на сайт с иконками.
 		/// </summary>
-		private void GoToIconsSite()
+		private void OpenIconsSourceSite()
 		{
 			System.Diagnostics.Process.Start("https://ru.icons8.com/web-app");
 		}
