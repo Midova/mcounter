@@ -20,7 +20,7 @@ namespace MoneyCounter.Services
 		private readonly Dictionary<Type, Type> _DialogWindow;
 
 		/// <inheritdoc />
-		public void Add(Type viewModel, Type window)
+		public void Register(Type viewModel, Type window)
 		{
 			if (_DialogWindow.ContainsKey(viewModel))
 				_DialogWindow[viewModel] = window;

@@ -3,7 +3,7 @@
 namespace MoneyCounter.Services
 {
 	/// <summary>
-	/// Интерфейс работы с диалоговым окном
+	/// Интерфейс работы с диалоговым окном.
 	/// </summary>
 	public interface IDialogWindowService
 	{
@@ -12,7 +12,7 @@ namespace MoneyCounter.Services
 		/// </summary>
 		/// <param name="viewModel">Модель представления данных.</param>
 		/// <param name="window">Окно.</param>
-		void Add(Type viewModel, Type window);
+		void Register(Type viewModel, Type window);
 
 		/// <summary>
 		/// Показывает окно дилога с указанным контектом.
