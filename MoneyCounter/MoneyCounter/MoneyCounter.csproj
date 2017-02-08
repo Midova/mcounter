@@ -80,6 +80,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AboutWindowModel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -89,7 +93,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\ConfirmationRequestService.cs" />
+    <Compile Include="Services\DialogWindowService.cs" />
     <Compile Include="Services\IConfirmationRequestService.cs" />
+    <Compile Include="Services\IDialogWindowService.cs" />
     <Compile Include="Services\IOpenProjectFileService.cs" />
     <Compile Include="Services\ISaveProjectFileService.cs" />
     <Compile Include="Services\OpenProjectFileService.cs" />
@@ -137,6 +143,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -147,25 +157,31 @@
     <Folder Include="Templates\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\cross.png" />
+    <Resource Include="Resources\Images\Menu.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\save_as.png" />
+    <Resource Include="Resources\Images\Save_as.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\save_close.png" />
+    <Resource Include="Resources\Images\Create_New.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\new.png" />
+    <Resource Include="Resources\Images\Upload.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\nameboard_open.png" />
+    <Resource Include="Resources\Images\Save.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\file_start_workflow.png" />
+    <Resource Include="Resources\Images\Save_2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\help.png" />
+    <Resource Include="Resources\Images\Save_Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Close.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

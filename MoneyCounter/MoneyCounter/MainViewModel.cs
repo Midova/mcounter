@@ -11,10 +11,12 @@ namespace MoneyCounter
 	/// Класс, работы с главным окном.
 	/// </summary>
 	public class MainViewModel : ObservableObject
-	{		
+	{
 		public MainViewModel(IOpenProjectFileService fileOpenDialogService,
-			ISaveProjectFileService fileSaveDialogService, IConfirmationRequestService confirmationRequestService)
+			ISaveProjectFileService fileSaveDialogService, IConfirmationRequestService confirmationRequestService, IDialogWindowService dialogWindowService)
 		{
+			_DialogWindowService = dialogWindowService;
+
 			_ProjectManager = new ProjectManager(confirmationRequestService, fileOpenDialogService, fileSaveDialogService);
 
 			OpenProjectCommand = new Command(_ProjectManager.LoadProject);
@@ -23,8 +25,10 @@ namespace MoneyCounter
 
 			CloseProjectCommand = new Command(_ProjectManager.CloseProject, _ProjectManager.CanCloseProject);
 			CreateNewProjectCommand = new Command(_ProjectManager.CreateNewProject);
-					
-			PropertyChanged += MainViewModel_PropertyChanged;		
+
+			PropertyChanged += MainViewModel_PropertyChanged;
+
+			ShowAboutWindowCommand = new Command(ShowAboutWindow);
 		}
 
 		/// <summary>
@@ -38,16 +42,24 @@ namespace MoneyCounter
 			((Command)SaveAsProjectCommand).RaiseCanExecuteChanged();
 			((Command)SaveProjectCommand).RaiseCanExecuteChanged();
 		}
-		
+		#region Infrastructura
+
+		/// <summary>
+		/// Сервис работы с диалоговым окном.
+		/// </summary>
+		private IDialogWindowService _DialogWindowService;
+
+		#endregion
+
 		#region Project Management
 
 		/// <summary>
 		/// Менеджер проекта.
 		/// </summary>
-		private ProjectManager _ProjectManager;
+		private ProjectManager _ProjectManager;		
 
 		/// <summary>
-		/// Текущаий проект.
+		/// Текущий проект.
 		/// </summary>
 		public Project Project => _ProjectManager.Project;
 
@@ -77,5 +89,18 @@ namespace MoneyCounter
 		public ICommand CloseProjectCommand { get; private set; }
 
 		#endregion
+
+		/// <summary>
+		/// Получает команду показа окна информации о программе.
+		/// </summary>
+		public ICommand ShowAboutWindowCommand { get; private set; }
+
+		/// <summary>
+		/// Показывает окно информации о программе.
+		/// </summary>
+		private void ShowAboutWindow()
+		{
+			_DialogWindowService.ShowDialog(new AboutWindowModel());
+		}
 	}
 }

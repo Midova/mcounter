@@ -17,8 +17,11 @@ namespace MoneyCounter
 			var openFileService = new OpenProjectFileService();
 			var saveFileService = new SaveProjectFileService();
 			var confirmationRequestService = new ConfirmationRequestService();
+			var dialogWindowService = new DialogWindowService();
 
-			var context = new MainViewModel(openFileService, saveFileService, confirmationRequestService);
+			dialogWindowService.Register(typeof(AboutWindowModel), typeof(AboutWindow));
+
+			var context = new MainViewModel(openFileService, saveFileService, confirmationRequestService, dialogWindowService);
 
 			mainWindow.DataContext = context;
 						
