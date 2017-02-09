@@ -92,6 +92,14 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OperationTemplate\OperationTemplateEditorView.xaml.cs">
+      <DependentUpon>OperationTemplateEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OperationTemplate\OperationTemplateEditorViewModel.cs" />
+    <Compile Include="OperationTemplate\OperationTemplateView.xaml.cs">
+      <DependentUpon>OperationTemplateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OperationTemplate\OperationTemplateViewModel.cs" />
     <Compile Include="Services\ConfirmationRequestService.cs" />
     <Compile Include="Services\DialogWindowService.cs" />
     <Compile Include="Services\IConfirmationRequestService.cs" />
@@ -148,6 +156,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OperationTemplate\OperationTemplateEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OperationTemplate\OperationTemplateView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
