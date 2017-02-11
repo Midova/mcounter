@@ -1,4 +1,5 @@
-﻿using MoneyCounter.Services;
+﻿using MoneyCounter.OperationTemplate;
+using MoneyCounter.Services;
 using System.Windows;
 
 namespace MoneyCounter
@@ -24,9 +25,13 @@ namespace MoneyCounter
 			var context = new MainViewModel(openFileService, saveFileService, confirmationRequestService, dialogWindowService);
 
 			mainWindow.DataContext = context;
-						
+
 			MainWindow = mainWindow;
 			MainWindow.Show();
+
+			var Tem = new OperationTemplateEditorView();
+
+			Tem.Show();
 		}
 	}
 }

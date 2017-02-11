@@ -5,8 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoneyCounter.OperationTemplate"
         mc:Ignorable="d"
-        Title="OperationTemplateView" Height="300" Width="300">
+        Title="OperationTemplateView" Height="450" Width="300">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <ToolBar Grid.Row="0">
+            <Button>Сохранить</Button>
+            <Button>Добавить</Button>
+            <Button>Удалить</Button>
+            <Button>Редактировать</Button>
+            <Button>Дублировать</Button>
+        </ToolBar>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Margin="5" ></TextBox>
+            <Button Grid.Column="1" Margin="5">
+                <Button.Background>
+                    <ImageBrush ImageSource="D:\Projects\mcounter\MoneyCounter\MoneyCounter\Resources\Images\Search.png" />
+                </Button.Background>
+            </Button>
+        </Grid>
+
+        <DataGrid Grid.Row="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="OperationName"/>
+                <DataGridTextColumn Header="Value"/>
+                <DataGridTextColumn Header="Tags"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Margin="5">Применить</Button>
+            <Button Margin="5">Отмена</Button>
+            <Button Margin="5">Закрыть</Button>
+        </StackPanel>
+
     </Grid>
 </Window>
