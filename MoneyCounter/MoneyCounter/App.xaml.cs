@@ -29,7 +29,7 @@ namespace MoneyCounter
 			MainWindow = mainWindow;
 			MainWindow.Show();
 
-			var Tem = new OperationTemplateEditorView();
+			var Tem = new OperationTemplateView();
 
 			Tem.Show();
 		}
