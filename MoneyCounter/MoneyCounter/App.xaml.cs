@@ -1,5 +1,4 @@
-﻿using MoneyCounter.OperationTemplate;
-using MoneyCounter.Services;
+﻿using MoneyCounter.Services;
 using System.Windows;
 
 namespace MoneyCounter
@@ -28,10 +27,6 @@ namespace MoneyCounter
 
 			MainWindow = mainWindow;
 			MainWindow.Show();
-
-			var Tem = new OperationTemplateEditorView();
-
-			Tem.Show();
 		}
 	}
 }
