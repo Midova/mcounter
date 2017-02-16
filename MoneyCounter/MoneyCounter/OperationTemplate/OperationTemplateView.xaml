@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MoneyCounter.OperationTemplate"
         mc:Ignorable="d"
         Title="OperationTemplateView" Height="450" Width="350">
-    <Grid>
+    <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>

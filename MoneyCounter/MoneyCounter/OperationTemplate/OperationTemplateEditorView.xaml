@@ -5,8 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoneyCounter.OperationTemplate"
         mc:Ignorable="d"
-        Title="OperationTemplateEditorView" Height="300" Width="300">
-    <Grid>
+        Title="OperationTemplateEditorView" Height="300" Width="450">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>            
+            <RowDefinition />
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Margin="10" Grid.Row="0" Grid.Column="0" Text="Name"/>
+            <Grid  Grid.Row="0" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox Grid.Column="0" Margin="5"/>
+                <Button Grid.Column="1" Margin="5">
+                    <Button.Background >
+                        <ImageBrush ImageSource="D:\Projects\mcounter\MoneyCounter\MoneyCounter\Resources\Images\add.png" />
+                    </Button.Background>
+                </Button>
+            </Grid>
+           
+            <TextBlock Margin="10" Grid.Row="1" Grid.Column="0" Text="Value"/>
+            <TextBox Margin="5" Grid.Row="1" Grid.Column="1"/>
+
+            <TextBlock Margin="10" Grid.Row="2" Grid.Column="0" Text="Tags"/>
+            <TextBox Margin="5" Grid.Row="2" Grid.Column="1"/>
+        </Grid>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Margin="5" >Ok</Button>
+            <Button Margin="5">Cancel</Button>
+        </StackPanel>
         
     </Grid>
 </Window>
