@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoneyCounter.OperationTemplate"
         mc:Ignorable="d"
-        Title="OperationTemplateView" Height="450" Width="350">
+        Title="OperationTemplateView" Height="450" Width="450">
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -52,7 +52,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0" Margin="5" ></TextBox>
+            <TextBox Grid.Column="0" ></TextBox>
             <Button Grid.Column="1" Margin="5">
                 <Viewbox Width="24" Height="24">
                     <Canvas Width="24" Height="24">
@@ -71,9 +71,9 @@
         </DataGrid>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Margin="5">Применить</Button>
-            <Button Margin="5">Отмена</Button>
-            <Button Margin="5">Закрыть</Button>
+            <Button Margin="5" Width="110">Применить</Button>
+            <Button Margin="5" Width="110">Отмена</Button>
+            <Button Margin="5" Width="110">Закрыть</Button>
         </StackPanel>
 
     </Grid>

@@ -47,8 +47,8 @@
         </Grid>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Margin="5" >Ok</Button>
-            <Button Margin="5">Cancel</Button>
+            <Button Margin="5" Width="110">Применить</Button>
+            <Button Margin="5" Width="110">Отмена</Button>
         </StackPanel>
         
     </Grid>
