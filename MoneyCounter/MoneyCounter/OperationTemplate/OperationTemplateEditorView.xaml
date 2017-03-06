@@ -23,24 +23,26 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Margin="10" Grid.Row="0" Grid.Column="0" Text="Name"/>
+            <TextBlock VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Text="Name"/>
             <Grid  Grid.Row="0" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <ComboBox Grid.Column="0" Margin="5"/>
-                <Button Grid.Column="1" Margin="5">
-                    <Button.Background >
-                        <ImageBrush ImageSource="D:\Projects\mcounter\MoneyCounter\MoneyCounter\Resources\Images\add.png" />
-                    </Button.Background>
+                <Button Grid.Column="1" Margin="5" >
+                    <Viewbox Width="24" Height="24" >
+                        <Canvas Width="24" Height="24">
+                            <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Fill="Black" />
+                        </Canvas>
+                    </Viewbox>
                 </Button>
             </Grid>
            
-            <TextBlock Margin="10" Grid.Row="1" Grid.Column="0" Text="Value"/>
+            <TextBlock VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Text="Value"/>
             <TextBox Margin="5" Grid.Row="1" Grid.Column="1"/>
 
-            <TextBlock Margin="10" Grid.Row="2" Grid.Column="0" Text="Tags"/>
+            <TextBlock VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Text="Tags"/>
             <TextBox Margin="5" Grid.Row="2" Grid.Column="1"/>
         </Grid>
 
