@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoneyCounter.OperationTemplate"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="OperationTemplateEditorView" Height="300" Width="450">
     <Grid Margin="5">
@@ -30,12 +31,10 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <ComboBox Grid.Column="0" Margin="5"/>
-                <Button Grid.Column="1" Margin="5" >
-                    <Viewbox Width="24" Height="24" >
-                        <Canvas Width="24" Height="24">
-                            <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" Fill="Black" />
-                        </Canvas>
-                    </Viewbox>
+                <Button Grid.Column="1" Style="{StaticResource MaterialDesignToolButton}"
+                        HorizontalAlignment="Left"
+                        ToolTip="MaterialDesignFloatingActionMiniButton">
+                    <materialDesign:PackIcon Kind="plus" Height="auto" Width="auto" />
                 </Button>
             </Grid>
            

@@ -1,4 +1,5 @@
-﻿using MoneyCounter.Services;
+﻿using MoneyCounter.OperationTemplate;
+using MoneyCounter.Services;
 using System.Windows;
 
 namespace MoneyCounter
