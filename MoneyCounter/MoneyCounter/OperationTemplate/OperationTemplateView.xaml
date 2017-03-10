@@ -56,8 +56,7 @@
 
             <TextBox Grid.Column="0" Margin="5"/>
             <Button Grid.Column="1" Style="{StaticResource MaterialDesignToolButton}"
-                        HorizontalAlignment="Left"
-                        ToolTip="MaterialDesignFloatingActionMiniButton">
+                        HorizontalAlignment="Left">
                 <materialDesign:PackIcon Kind="magnify" Height="auto" Width="auto" />
             </Button>
         </Grid>

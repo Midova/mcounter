@@ -25,25 +25,25 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Text="Name"/>
-            <Grid  Grid.Row="0" Grid.Column="1">
+            <TextBox Margin="5" Grid.Row="0" Grid.Column="1"/>
+
+            <TextBlock VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Text="Value"/>
+            <TextBox Margin="5" Grid.Row="1" Grid.Column="1"/>
+
+            <TextBlock VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Text="Tags"/>
+            <Grid  Grid.Row="2" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <ComboBox Grid.Column="0" Margin="5"/>
                 <Button Grid.Column="1" Style="{StaticResource MaterialDesignToolButton}"
-                        HorizontalAlignment="Left"
-                        ToolTip="MaterialDesignFloatingActionMiniButton">
+                        HorizontalAlignment="Left">
                     <materialDesign:PackIcon Kind="plus" Height="auto" Width="auto" />
                 </Button>
             </Grid>
-           
-            <TextBlock VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Text="Value"/>
-            <TextBox Margin="5" Grid.Row="1" Grid.Column="1"/>
-
-            <TextBlock VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Text="Tags"/>
-            <TextBox Margin="5" Grid.Row="2" Grid.Column="1"/>
         </Grid>
+        
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Margin="5" Width="110">Применить</Button>
             <Button Margin="5" Width="110">Отмена</Button>
