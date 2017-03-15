@@ -163,11 +163,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="LoagAccess\" />
-    <Folder Include="Operations\" />
-    <Folder Include="Templates\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Images\Menu.png" />
   </ItemGroup>
