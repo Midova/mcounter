@@ -1,5 +1,4 @@
-﻿
-namespace MoneyCounter.OperationTemplate
+﻿namespace MoneyCounter.OperationTemplate
 {
 	public class OperationTemplateViewModel
 	{
