@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 
-namespace MoneyCounter.Services
+namespace MoneyCounter.Infrastructure.Services
 {
 	/// <summary>
 	/// Класс сервиса работы с диалоговыми окнами.

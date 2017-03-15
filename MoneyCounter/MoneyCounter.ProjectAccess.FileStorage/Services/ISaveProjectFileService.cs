@@ -1,4 +1,4 @@
-﻿namespace MoneyCounter.Services
+﻿namespace MoneyCounter.ProjectAccess.FileStorage.Services
 {
 	/// <summary>
 	/// Интерфейс сохранения файла.

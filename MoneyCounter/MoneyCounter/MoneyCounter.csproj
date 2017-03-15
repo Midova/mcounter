@@ -100,15 +100,6 @@
       <DependentUpon>OperationTemplateView.xaml</DependentUpon>
     </Compile>
     <Compile Include="OperationTemplate\OperationTemplateViewModel.cs" />
-    <Compile Include="Services\ConfirmationRequestService.cs" />
-    <Compile Include="Services\DialogWindowService.cs" />
-    <Compile Include="Services\IConfirmationRequestService.cs" />
-    <Compile Include="Services\IDialogWindowService.cs" />
-    <Compile Include="Services\IOpenProjectFileService.cs" />
-    <Compile Include="Services\ISaveProjectFileService.cs" />
-    <Compile Include="Services\OpenProjectFileService.cs" />
-    <Compile Include="Services\SaveProjectFileService.cs" />
-    <Compile Include="LoagAccess\ProjectManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -149,6 +140,10 @@
       <Project>{84695a5e-1fe5-4a3b-987b-e8fd5113b392}</Project>
       <Name>MoneyCounter.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MoneyCounter.ProjectAccess.FileStorage\MoneyCounter.ProjectAccess.FileStorage.csproj">
+      <Project>{d51f3234-fe28-40c5-9c13-4a10c45c55c3}</Project>
+      <Name>MoneyCounter.ProjectAccess.FileStorage</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="AboutWindow.xaml">
@@ -169,6 +164,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="LoagAccess\" />
     <Folder Include="Operations\" />
     <Folder Include="Templates\" />
   </ItemGroup>
