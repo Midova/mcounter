@@ -1,8 +1,9 @@
-﻿using System;
+﻿using MoneyCounter.Infrastructure.Services;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 
-namespace MoneyCounter.Infrastructure.Services
+namespace MoneyCounter.Services
 {
 	/// <summary>
 	/// Класс сервиса работы с диалоговыми окнами.

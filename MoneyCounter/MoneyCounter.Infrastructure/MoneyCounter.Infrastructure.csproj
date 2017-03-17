@@ -46,10 +46,10 @@
   <ItemGroup>
     <Compile Include="ProjectAccess\IProjectManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ConfirmationRequestService.cs" />
-    <Compile Include="Services\DialogWindowService.cs" />
     <Compile Include="Services\IConfirmationRequestService.cs" />
     <Compile Include="Services\IDialogWindowService.cs" />
+    <Compile Include="Services\IOpenProjectFileService.cs" />
+    <Compile Include="Services\ISaveProjectFileService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MoneyCounter.Data\MoneyCounter.Data.csproj">

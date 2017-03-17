@@ -1,4 +1,4 @@
-﻿namespace MoneyCounter.ProjectAccess.FileStorage.Services
+﻿namespace MoneyCounter.Infrastructure.Services
 {
 	/// <summary>
 	/// Интерфейс загрузки файла.

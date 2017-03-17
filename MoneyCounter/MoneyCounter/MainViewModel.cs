@@ -2,7 +2,6 @@
 using System.Windows.Input;
 using Catel.Data;
 using MoneyCounter.Data.Model;
-using MoneyCounter.ProjectAccess.FileStorage.Services;
 using MoneyCounter.Infrastructure.Services;
 using MoneyCounter.ProjectAccess.FileStorage;
 

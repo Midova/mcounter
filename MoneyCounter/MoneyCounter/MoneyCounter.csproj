@@ -100,6 +100,8 @@
       <DependentUpon>OperationTemplateView.xaml</DependentUpon>
     </Compile>
     <Compile Include="OperationTemplate\OperationTemplateViewModel.cs" />
+    <Compile Include="Services\ConfirmationRequestService.cs" />
+    <Compile Include="Services\DialogWindowService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

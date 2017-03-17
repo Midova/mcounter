@@ -1,5 +1,5 @@
-﻿using MoneyCounter.Infrastructure.Services;
-using MoneyCounter.ProjectAccess.FileStorage.Services;
+﻿using MoneyCounter.ProjectAccess.FileStorage.Services;
+using MoneyCounter.Services;
 using System.Windows;
 
 namespace MoneyCounter
