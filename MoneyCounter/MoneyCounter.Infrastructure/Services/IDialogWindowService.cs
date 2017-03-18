@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MoneyCounter.Services
+namespace MoneyCounter.Infrastructure.Services
 {
 	/// <summary>
 	/// Интерфейс работы с диалоговым окном.

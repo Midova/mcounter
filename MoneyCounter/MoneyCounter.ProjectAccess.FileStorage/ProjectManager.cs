@@ -1,10 +1,11 @@
 ﻿using MoneyCounter.Infrastructure.ProjectAccess;
-using MoneyCounter.Services;
 using Newtonsoft.Json;
 using System.IO;
 using MoneyCounter.Data.Model;
+using MoneyCounter.ProjectAccess.FileStorage.Services;
+using MoneyCounter.Infrastructure.Services;
 
-namespace MoneyCounter.Infrastructure.Session
+namespace MoneyCounter.ProjectAccess.FileStorage
 {
 	/// <summary>
 	/// Класс управления проектом.
@@ -59,8 +60,7 @@ namespace MoneyCounter.Infrastructure.Session
 			if (!Project.IsDerty)
 				return;
 
-			var result = _ConfirmationRequestService
-				.RequestConfirmation("Сессия не сохранена. Сохранить?", "Внимание", System.Windows.MessageBoxButton.OKCancel, System.Windows.MessageBoxImage.Warning);
+			var result = _ConfirmationRequestService.RequestConfirmation("Сессия не сохранена. Сохранить?", "Внимание", System.Windows.MessageBoxButton.OKCancel, System.Windows.MessageBoxImage.Warning);
 
 			if (result != System.Windows.MessageBoxResult.OK)
 				return;

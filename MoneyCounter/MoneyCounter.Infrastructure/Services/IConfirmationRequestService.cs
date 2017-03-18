@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace MoneyCounter.Services
+namespace MoneyCounter.Infrastructure.Services
 {
 	/// <summary>
 	/// Интерфейс работы с окном сообщений.

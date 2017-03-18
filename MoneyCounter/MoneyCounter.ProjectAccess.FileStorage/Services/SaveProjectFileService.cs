@@ -1,7 +1,7 @@
 ﻿using Microsoft.Win32;
-using MoneyCounter.Infrastructure.Session;
+using MoneyCounter.Infrastructure.Services;
 
-namespace MoneyCounter.Services
+namespace MoneyCounter.ProjectAccess.FileStorage.Services
 {
 	/// <summary>
 	/// Сервис сохранения в файл.

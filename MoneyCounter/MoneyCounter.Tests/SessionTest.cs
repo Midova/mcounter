@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MoneyCounter.Data.Model;
-using MoneyCounter.Infrastructure.Session;
-using MoneyCounter.Services;
+using MoneyCounter.ProjectAccess.FileStorage.Services;
 using System;
 
 namespace MoneyCounter.Tests

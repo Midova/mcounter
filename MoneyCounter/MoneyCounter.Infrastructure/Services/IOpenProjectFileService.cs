@@ -1,4 +1,4 @@
-﻿namespace MoneyCounter.Services
+﻿namespace MoneyCounter.Infrastructure.Services
 {
 	/// <summary>
 	/// Интерфейс загрузки файла.

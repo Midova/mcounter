@@ -1,9 +1,9 @@
 ﻿using Catel.MVVM;
-using MoneyCounter.Services;
 using System.Windows.Input;
 using Catel.Data;
-using MoneyCounter.Infrastructure.Session;
 using MoneyCounter.Data.Model;
+using MoneyCounter.Infrastructure.Services;
+using MoneyCounter.ProjectAccess.FileStorage;
 
 namespace MoneyCounter
 {

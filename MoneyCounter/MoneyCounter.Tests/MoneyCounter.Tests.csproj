@@ -59,6 +59,14 @@
       <Project>{aad56e40-7ce7-4cf9-8bdc-fc10a5eb14ac}</Project>
       <Name>MoneyCounter.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MoneyCounter.Infrastructure\MoneyCounter.Infrastructure.csproj">
+      <Project>{84695a5e-1fe5-4a3b-987b-e8fd5113b392}</Project>
+      <Name>MoneyCounter.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MoneyCounter.ProjectAccess.FileStorage\MoneyCounter.ProjectAccess.FileStorage.csproj">
+      <Project>{d51f3234-fe28-40c5-9c13-4a10c45c55c3}</Project>
+      <Name>MoneyCounter.ProjectAccess.FileStorage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MoneyCounter\MoneyCounter.csproj">
       <Project>{3e20c65f-39e4-47d9-988e-7b79bcb254d1}</Project>
       <Name>MoneyCounter</Name>

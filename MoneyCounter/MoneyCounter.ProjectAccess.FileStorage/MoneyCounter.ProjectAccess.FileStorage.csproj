@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{84695A5E-1FE5-4A3B-987B-E8FD5113B392}</ProjectGuid>
+    <ProjectGuid>{D51F3234-FE28-40C5-9C13-4A10C45C55C3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MoneyCounter.Infrastructure</RootNamespace>
-    <AssemblyName>MoneyCounter.Infrastructure</AssemblyName>
+    <RootNamespace>MoneyCounter.ProjectAccess.FileStorage</RootNamespace>
+    <AssemblyName>MoneyCounter.ProjectAccess.FileStorage</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -31,7 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -41,20 +44,24 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProjectAccess\IProjectManager.cs" />
+    <Compile Include="ProjectManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IConfirmationRequestService.cs" />
-    <Compile Include="Services\IDialogWindowService.cs" />
-    <Compile Include="Services\IOpenProjectFileService.cs" />
-    <Compile Include="Services\ISaveProjectFileService.cs" />
+    <Compile Include="Services\OpenProjectFileService.cs" />
+    <Compile Include="Services\SaveProjectFileService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MoneyCounter.Data\MoneyCounter.Data.csproj">
       <Project>{aad56e40-7ce7-4cf9-8bdc-fc10a5eb14ac}</Project>
       <Name>MoneyCounter.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MoneyCounter.Infrastructure\MoneyCounter.Infrastructure.csproj">
+      <Project>{84695a5e-1fe5-4a3b-987b-e8fd5113b392}</Project>
+      <Name>MoneyCounter.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using MoneyCounter.Infrastructure.Services;
+using System.Windows;
 
 namespace MoneyCounter.Services
 {
