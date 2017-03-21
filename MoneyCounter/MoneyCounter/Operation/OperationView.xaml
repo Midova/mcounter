@@ -4,9 +4,70 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MoneyCounter.Operation"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+             d:DesignHeight="350" d:DesignWidth="450">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ToolBar Grid.Row="0">
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/MoneyCounter;component/Resources/Images/Create_New.png"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0,0,0">Добавить</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/MoneyCounter;component/Resources/Images/Save.png"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0,0,0">Сохранить</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/MoneyCounter;component/Resources/Images/Copy.png"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0,0,0">Дублировать</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/MoneyCounter;component/Resources/Images/Save_as.png"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0,0,0">Редактировать</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/MoneyCounter;component/Resources/Images/Delete.png"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0,0,0">Удалить</TextBlock>
+                </StackPanel>
+            </Button>
+        </ToolBar>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" Margin="5"/>
+            <Button Grid.Column="1" Style="{StaticResource MaterialDesignToolButton}"
+                        HorizontalAlignment="Left">
+                <materialDesign:PackIcon Kind="magnify" Height="auto" Width="auto" />
+            </Button>
+        </Grid>
+
+        <DataGrid Grid.Row="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="DataMember"/>
+                <DataGridTextColumn Header="OperationName"/>
+                <DataGridTextColumn Header="Value"/>
+                <DataGridTextColumn Header="Tags"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </UserControl>
