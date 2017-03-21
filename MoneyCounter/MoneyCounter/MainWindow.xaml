@@ -55,8 +55,14 @@
                     <Image Source="Resources/Images/Info.png"/>
                 </MenuItem.Icon>
             </MenuItem>
-
         </Menu>
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="Операции"/>
+            <TabItem Header="Шаблоны">
+                
+            </TabItem>
+        </TabControl>
         
     </Grid>
 </Window>
