@@ -57,7 +57,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Catel.MVVM.4.5.4\lib\net46\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -100,6 +102,10 @@
       <DependentUpon>OperationTemplateView.xaml</DependentUpon>
     </Compile>
     <Compile Include="OperationTemplate\OperationTemplateViewModel.cs" />
+    <Compile Include="Operation\OperationView.xaml.cs">
+      <DependentUpon>OperationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\OperationViewModel.cs" />
     <Compile Include="Services\ConfirmationRequestService.cs" />
     <Compile Include="Services\DialogWindowService.cs" />
   </ItemGroup>
@@ -161,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OperationTemplate\OperationTemplateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation\OperationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
