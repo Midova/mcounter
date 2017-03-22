@@ -1,17 +1,17 @@
-﻿<UserControl x:Class="MoneyCounter.OperationTemplate.OperationTemplateView"
+﻿<UserControl x:Class="MoneyCounter.Operation.OperationView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:MoneyCounter.OperationTemplate"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MoneyCounter.Operation"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d"
-             d:DesignHeight="250" d:DesignWidth="450">
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="450">
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition/>            
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <ToolBar Grid.Row="0">
@@ -62,11 +62,12 @@
 
         <DataGrid Grid.Row="2">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="TemplateName"/>
+                <DataGridTextColumn Header="DataMember"/>
+                <DataGridTextColumn Header="OperationName"/>
                 <DataGridTextColumn Header="Value"/>
                 <DataGridTextColumn Header="Tags"/>
             </DataGrid.Columns>
         </DataGrid>
-       
+
     </Grid>
-    </UserControl>
+</UserControl>
